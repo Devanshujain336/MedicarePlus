@@ -1,1 +1,0 @@
-mongodb+srv://dev:devjain@cluster0.hlznklx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
