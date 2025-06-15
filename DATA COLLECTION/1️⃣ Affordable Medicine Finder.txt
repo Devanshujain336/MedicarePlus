@@ -1,0 +1,51 @@
+1️⃣ Affordable Medicine Finder
+🔹 🤖 AI Chatbot for Cost-Effective Medicine
+✅ Analyzes active ingredients in prescribed medicines
+✅ Suggests cheaper alternatives with the same composition
+✅ Direct purchase recommendations to save money & ensure availability
+
+🔹 💊 Medicine Awareness & Usage Guide
+📌 Scan Medicine Explains medicine effects (e.g., cough syrup causing drowsiness 😴)
+📌 Details targeted organs, receptors, and working mechanism of medicine
+
+🔹 ⏰ Medicine Tracker & Reminders
+🔔 Smart notifications for timely medicine intake
+🔔 Auto-reminders for refills before medicines run out
+
+2️⃣  Monitoring
+🔹 📹 Continuous Patient Monitoring (For Hospitals/Bedrest Patients)
+🛏️ 24/7 movement tracking using OpenCV
+⚠️ Alarm triggers for unusual movements & critical conditions
+
+🔹 📷 AI-Based Symptom Scanner
+🩺 Scans rashes, facial asymmetry, or skin marks for early detection
+🔍 Predicts future pain risks based on facial/skull structure analysis
+
+🔹 📊 Federated Learning 3D Model
+📈 Tracks body fluctuations & report patterns
+🚨 Flags irregularities for potential internal diseases
+
+3️⃣ Location-Based Medical Assistance
+🔹 🚑 Instant Emergency Support System
+📍 One-click call feature to connect with nearby clinics, medical workers, & specialists
+📞 Emergency responders or volunteers can come to your location and take you to the hospital quickly ensures faster medical help instead of waiting for an ambulance
+
+🔹 ⚠️ Disease-Prone Area Alerts
+📢 Real-time alerts for health risks in specific locations like high dengue prone area in vijaywada
+
+4️⃣ Patient Recovery & Motivation
+🔹 🎥 Live Sessions from Recovered Patients
+🗣️ Real-life success stories to inspire & educate
+🧠 Brain games for awareness & mental engagement
+
+5️⃣ Smart Healthcare Recommendations
+🔹 📜 Medical History Database
+📊 Stores & organizes lab test records for emergency reference
+💡 Helps doctors make informed treatment decisions
+
+🔹 🏥 Government Scheme Awareness
+📢 Provides information on medical benefits & schemes for specific diseases
+
+🔹 🗣️ Simple & Native Language Explanations
+📖 Easy-to-understand explanations for diseases & treatments
+🎨 Uses creative analogies (e.g., "Your 5L blood was purified today") for better comprehension

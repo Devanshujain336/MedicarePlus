@@ -1,0 +1,2455 @@
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patient Support </title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+      * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+          background-color: #f0f8ff;
+          color: #333;
+      }
+      .navbar {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          background-color: #0f52ba;
+          padding: 15px;
+          color:white;
+      }
+
+      .navbar a {
+          color: white;
+          text-decoration: none;
+          font-size: 18px;
+          padding: 10px 15px;
+          transition: background 0.3s;
+          border-radius: 5px;
+      }
+
+      .navbar a:hover {
+          background-color: #0056b3;
+      }
+
+      @media (max-width: 600px) {
+          .navbar {
+              flex-direction: column;
+          }
+          .navbar a {
+              display: block;
+              width: 100%;
+              text-align: center;
+              padding: 10px;
+          }
+      }
+
+      header {
+          background-color: #1a1a2e;
+          color: white;
+          text-align: center;
+          padding: 2rem 0;
+          background-image: url(https://static.vecteezy.com/system/resources/previews/000/219/529/original/medical-background-vector.jpg);
+      }
+     .headcontainer {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 1rem;
+      }
+      .headcontainer h1{
+          color:white;
+      }
+      .section-title {
+          color: #1a1a2e;
+          margin: 2rem 0 1rem;
+          padding-bottom: 0.5rem;
+          border-bottom: 2px solid #0f52ba;
+      }
+      /* Live Sessions Section */
+      .live-sessions {
+          background-color: white;
+          padding: 2rem 0;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .sessions-container {
+          display: flex;
+          gap: 2rem;
+          margin-top: 2rem;
+      }
+
+      .upcoming-sessions {
+          flex: 3;
+      }
+
+      .session-card {
+          background-color: #f8f9fa;
+          border-left: 4px solid #0f52ba;
+          padding: 1rem;
+          margin-bottom: 1rem;
+          transition: transform 0.3s ease;
+      }
+
+      .session-card:hover {
+          transform: translateX(5px);
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .session-title {
+          color: #0f52ba;
+          margin-bottom: 0.5rem;
+      }
+
+      .session-info {
+          display: flex;
+          justify-content: space-between;
+      }
+
+      .session-date {
+          color: #1a1a2e;
+          font-weight: bold;
+      }
+
+      .session-time {
+          color: #555;
+      }
+
+      .session-description {
+          margin-top: 0.5rem;
+          color: #555;
+      }
+
+      .attend-section {
+          flex: 2;
+          background-color: #1a1a2e;
+          color: white;
+          padding: 1.5rem;
+          border-radius: 8px;
+      }
+
+      .attend-title {
+          color: white;
+          margin-bottom: 1rem;
+          text-align: center;
+      }
+
+      .zoom-info {
+          background-color: #0f52ba;
+          padding: 1rem;
+          border-radius: 5px;
+          margin: 1rem 0;
+      }
+
+      .attend-button {
+          display: block;
+          width: 100%;
+          background-color: #0f52ba;
+          color: white;
+          border: none;
+          padding: 1rem;
+          font-size: 1rem;
+          font-weight: bold;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+      }
+
+      .attend-button:hover {
+          background-color: #0d47a1;
+      }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding:1rem;
+  }
+
+  h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    margin-top:4px;
+  }
+
+  .guidelines-grid {
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+    gap: 20px;
+  }
+
+  .guideline-box {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+  }
+
+  .guideline-header {
+    /* background-color: #ff7722; */
+    background-color: #2980b9;
+    color: white;
+    padding: 15px 20px;
+    font-size: 18px;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .show-button {
+    background-color: white;
+    color: #2980b9;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 12px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s ease;
+  }
+
+  .show-button:hover {
+    background-color: #f8f9fa;
+    transform: scale(1.05);
+  }
+
+  .guideline-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.6s ease;
+    padding: 0 20px;
+  }
+
+  .guideline-content.show {
+    max-height: 3000px;
+    padding: 20px;
+  }
+
+  .guideline-content h3 {
+    color: #2980b9;
+    margin-top: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+  }
+
+  .guideline-content ul {
+    padding-left: 20px;
+  }
+
+  .guideline-content li {
+    margin-bottom: 8px;
+    line-height: 1.5;
+  }
+
+  .guideline-content a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .guideline-content a:hover {
+    text-decoration: underline;
+  }
+
+  .scheme-card {
+    background-color: #f9f9f9;
+    border-left: 4px solid #2980b9;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 0 5px 5px 0;
+  }
+
+  .scheme-card h4 {
+    margin-top: 0;
+    color: #333;
+  }
+  .name{
+      display: flex;
+      gap:0.5rem;
+  }
+  .name img{
+      height:40px;
+      width:60px;
+      border-radius: 50%;
+  }
+  .scheme-detail {
+    margin-top: 10px;
+  }
+
+  .scheme-detail strong {
+    color: #555;
+  }
+      #link a{
+          color:white;
+      }
+      footer {
+          background-color: #1a1a2e;
+          color: white;
+          text-align: center;
+          padding: 2rem 0;
+          margin-top: 2rem;
+      }
+
+      /* Government Schemes Styles */
+      .schemes-container {
+          padding: 20px;
+          background: var(--white);
+          border-radius: 12px;
+          box-shadow: var(--shadow-sm);
+      }
+
+      .schemes-header {
+          margin-bottom: 30px;
+      }
+
+      .schemes-header h2 {
+          color: var(--primary-blue);
+          font-size: 24px;
+          margin-bottom: 20px;
+      }
+
+      .filters-container {
+          display: flex;
+          flex-direction: column;
+          gap: 15px;
+      }
+
+      .search-filter input {
+          width: 100%;
+          padding: 12px 20px;
+          border: 2px solid var(--border-blue);
+          border-radius: 25px;
+          font-size: 16px;
+          transition: all var(--transition-speed);
+      }
+
+      .search-filter input:focus {
+          border-color: var(--primary-blue);
+          box-shadow: 0 0 0 4px var(--light-blue);
+          outline: none;
+      }
+
+      .filter-group {
+          display: flex;
+          gap: 15px;
+          flex-wrap: wrap;
+      }
+
+      .filter-group select {
+          padding: 10px 20px;
+          border: 2px solid var(--border-blue);
+          border-radius: 20px;
+          background: var(--white);
+          color: var(--text-blue);
+          cursor: pointer;
+          transition: all var(--transition-speed);
+      }
+
+      .filter-group select:focus {
+          border-color: var(--primary-blue);
+          box-shadow: 0 0 0 4px var(--light-blue);
+          outline: none;
+      }
+
+      .reset-btn {
+          padding: 10px 20px;
+          background: var(--light-blue);
+          color: var(--primary-blue);
+          border: none;
+          border-radius: 20px;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          transition: all var(--transition-speed);
+      }
+
+      .reset-btn:hover {
+          background: var(--primary-blue);
+          color: var(--white);
+      }
+
+      .schemes-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+          gap: 20px;
+          margin-top: 20px;
+      }
+
+      .scheme-card {
+          background: var(--white);
+          border: 1px solid var(--border-blue);
+          border-radius: 12px;
+          padding: 20px;
+          transition: all var(--transition-speed);
+      }
+
+      .scheme-card:hover {
+          transform: translateY(-5px);
+          box-shadow: var(--shadow-md);
+          border-color: var(--primary-blue);
+      }
+
+      .scheme-header {
+          display: flex;
+          align-items: flex-start;
+          gap: 15px;
+          margin-bottom: 15px;
+      }
+
+      .scheme-icon {
+          font-size: 24px;
+          color: var(--primary-blue);
+      }
+
+      .scheme-title {
+          font-size: 18px;
+          font-weight: 600;
+          color: var(--text-blue);
+      }
+
+      .scheme-details {
+          color: var(--text-blue);
+          margin-bottom: 15px;
+      }
+
+      .scheme-tags {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+          margin-bottom: 15px;
+      }
+
+      .scheme-tag {
+          padding: 4px 12px;
+          background: var(--light-blue);
+          color: var(--primary-blue);
+          border-radius: 15px;
+          font-size: 12px;
+      }
+
+      .scheme-link {
+          display: inline-block;
+          padding: 8px 16px;
+          background: var(--primary-blue);
+          color: var(--white);
+          border-radius: 20px;
+          text-decoration: none;
+          transition: all var(--transition-speed);
+      }
+
+      .scheme-link:hover {
+          background: var(--dark-blue);
+          transform: translateY(-2px);
+      }
+
+      @media (max-width: 768px) {
+          .filter-group {
+              flex-direction: column;
+          }
+          
+          .filter-group select {
+              width: 100%;
+          }
+      }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+      <div class="nav-logo">
+          <h3>Patient Support Portal</h3>
+      </div>
+      <div class="nav-items">
+      <a href="index.html">Home</a>
+      <a href="location.html">Contact</a>
+      <a href="#schedule">Schedule a Meeting</a>
+      <a href="#schemes">Schemes</a>
+      </div>
+  </nav>
+  <header>
+      <div class="headcontainer">
+          <h1>Patient Support Portal</h1>
+          <p>Connect, Learn, and Recover Together</p>
+      </div>
+  </header>
+
+  <!-- Live Sessions Section -->
+  <section class="live-sessions">
+      <div class="container">
+          <h2 class="section-title" id="schedule">Live Sessions with Recovered Patients</h2>
+          <div class="sessions-container">
+              <div class="upcoming-sessions">
+                  <!-- Session 1 -->
+                  <div class="session-card">
+                      <h3 class="session-title">Life After Cancer: My Journey to Recovery</h3>
+                      <div class="session-info">
+                          <span class="session-date">March 5, 2025</span>
+                          <span class="session-time">2:00 PM - 3:30 PM EST</span>
+                      </div>
+                      <p class="session-description">Join John Miller as he shares his inspiring journey through cancer treatment and how he rebuilt his life after recovery.</p>
+                  </div>
+
+                  <!-- Session 2 -->
+                  <div class="session-card">
+                      <h3 class="session-title">Managing Diabetes: Lifestyle Changes That Work</h3>
+                      <div class="session-info">
+                          <span class="session-date">March 10, 2025</span>
+                          <span class="session-time">5:00 PM - 6:00 PM EST</span>
+                      </div>
+                      <p class="session-description">Dr. Sarah Johnson and recovered patient Robert Davis discuss practical lifestyle adjustments for diabetes management.</p>
+                  </div>
+
+                  <!-- Session 3 -->
+                  <div class="session-card">
+                      <h3 class="session-title">Heart Attack Survivors Support Group</h3>
+                      <div class="session-info">
+                          <span class="session-date">March 15, 2025</span>
+                          <span class="session-time">1:00 PM - 2:30 PM EST</span>
+                      </div>
+                      <p class="session-description">A panel of heart attack survivors share their stories and answer questions about recovery and lifestyle changes.</p>
+                  </div>
+
+                  <!-- Session 4 -->
+                  <div class="session-card">
+                      <h3 class="session-title">Mental Health Recovery: Breaking the Stigma</h3>
+                      <div class="session-info">
+                          <span class="session-date">March 22, 2025</span>
+                          <span class="session-time">4:00 PM - 5:30 PM EST</span>
+                      </div>
+                      <p class="session-description">Lisa Wong discusses her journey through depression and anxiety, and how she found healing through therapy and community support.</p>
+                  </div>
+
+                  <!-- Session 5 -->
+                  <div class="session-card">
+                      <h3 class="session-title">Living with Chronic Pain: Strategies and Hope</h3>
+                      <div class="session-info">
+                          <span class="session-date">March 28, 2025</span>
+                          <span class="session-time">3:00 PM - 4:00 PM EST</span>
+                      </div>
+                      <p class="session-description">Michael Torres shares practical strategies for managing chronic pain and maintaining quality of life after a serious back injury.</p>
+                  </div>
+              </div>
+
+              <div class="attend-section">
+                  <h3 class="attend-title">Join Our Live Sessions</h3>
+                  <p>Connect with recovered patients and healthcare professionals to gain insights, ask questions, and find support.</p>
+
+                  <div class="zoom-info">
+                      <p id="meetid"><strong>Zoom Meeting ID:</strong> 123 456 7890</p>
+                      <p id="password"><strong>Password:</strong> Healing2025</p>
+                      <p id="link" style="color: white;"><strong>Link:</strong> <a href="https://us05web.zoom.us/j/83369171178?pwd=cyWNGRpW3mXyLnDAw1u13RGTopVukk.1">https://us05web.zoom.us/j/83369171178?pwd=cyWNGRpW3mXyLnDAw1u13RGTopVukk.1</a></p>
+                  </div>
+
+                  <button class="attend-button">Attend a Live Session</button>
+              </div>
+          </div>
+      </div>
+  </section>
+
+<div class="container" id="schemes">
+  <h1>Indian Government Health Guidelines &amp; Financial Support Programs</h1>
+
+  <div class="schemes-container">
+      <div class="schemes-header">
+          <h2>Government Health Schemes</h2>
+          <div class="filters-container">
+              <div class="search-filter">
+                  <input type="text" id="scheme-search" placeholder="Search schemes...">
+              </div>
+              <div class="filter-group">
+                <select id="state-filter">
+                  <option value="">Select State</option>
+                  <option value="all-india">All India</option>
+                  <option value="andhra-pradesh">Andhra Pradesh</option>
+                  <option value="arunachal-pradesh">Arunachal Pradesh</option>
+                  <option value="assam">Assam</option>
+                  <option value="bihar">Bihar</option>
+                  <option value="chhattisgarh">Chhattisgarh</option>
+                  <option value="goa">Goa</option>
+                  <option value="gujarat">Gujarat</option>
+                  <option value="haryana">Haryana</option>
+                  <option value="himachal-pradesh">Himachal Pradesh</option>
+                  <option value="jharkhand">Jharkhand</option>
+                  <option value="karnataka">Karnataka</option>
+                  <option value="kerala">Kerala</option>
+                  <option value="madhya-pradesh">Madhya Pradesh</option>
+                  <option value="maharashtra">Maharashtra</option>
+                  <option value="manipur">Manipur</option>
+                  <option value="meghalaya">Meghalaya</option>
+                  <option value="mizoram">Mizoram</option>
+                  <option value="nagaland">Nagaland</option>
+                  <option value="odisha">Odisha</option>
+                  <option value="punjab">Punjab</option>
+                  <option value="rajasthan">Rajasthan</option>
+                  <option value="sikkim">Sikkim</option>
+                  <option value="tamil-nadu">Tamil Nadu</option>
+                  <option value="telangana">Telangana</option>
+                  <option value="tripura">Tripura</option>
+                  <option value="uttar-pradesh">Uttar Pradesh</option>
+                  <option value="uttarakhand">Uttarakhand</option>
+                  <option value="west-bengal">West Bengal</option>
+                  <option value="andaman-nicobar">Andaman and Nicobar Islands</option>
+                  <option value="chandigarh">Chandigarh</option>
+                  <option value="dadra-nagar-haveli-daman-diu">Dadra and Nagar Haveli and Daman and Diu</option>
+                  <option value="delhi">Delhi</option>
+                  <option value="jammu-kashmir">Jammu and Kashmir</option>
+                  <option value="ladakh">Ladakh</option>
+                  <option value="lakshadweep">Lakshadweep</option>
+                  <option value="puducherry">Puducherry</option>
+              </select>
+              
+                  <select id="income-filter">
+                      <option value="">Income Range</option>
+                      <option value="0-100000">Below 1 Lakh</option>
+                      <option value="100000-300000">1-3 Lakhs</option>
+                      <option value="300000-500000">3-5 Lakhs</option>
+                      <option value="500000+">Above 5 Lakhs</option>
+                  </select>
+                  <select id="category-filter">
+                      <option value="">Select Category</option>
+                      <option value="general">General</option>
+                      <option value="sc">SC</option>
+                      <option value="st">ST</option>
+                      <option value="obc">OBC</option>
+                      <option value="EWS">EWS</option>
+                  </select>
+                  <button id="reset-filters" class="reset-btn">
+                      <i class="fas fa-undo"></i> Reset Filters
+                  </button>
+              </div>
+          </div>
+      </div>
+
+      <div class="schemes-grid" id="schemes-grid">
+      <div class="scheme-card">
+          <div class="scheme-header">
+              <div class="scheme-icon">
+                  <i class="fas fa-hospital-user"></i>
+              </div>
+              <h3 class="scheme-title">Ayushman Bharat Pradhan Mantri Jan Arogya Yojana (AB PM-JAY)</h3>
+          </div>
+          <div class="scheme-details">
+              Health insurance coverage up to ₹5 lakhs per family per year for secondary and tertiary care hospitalization.
+          </div>
+          <div class="scheme-tags">
+              
+                  <span class="scheme-tag">Health Insurance</span>
+              
+                  <span class="scheme-tag">Hospitalization</span>
+              
+          </div>
+          <a href="https://pmjay.gov.in/" class="scheme-link" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="scheme-card">
+          <div class="scheme-header">
+              <div class="scheme-icon">
+                  <i class="fas fa-baby"></i>
+              </div>
+              <h3 class="scheme-title">Pradhan Mantri Surakshit Matritva Abhiyan (PMSMA)</h3>
+          </div>
+          <div class="scheme-details">
+              Free antenatal care to pregnant women on 9th of every month.
+          </div>
+          <div class="scheme-tags">
+              
+                  <span class="scheme-tag">Maternal Health</span>
+              
+                  <span class="scheme-tag">Free Checkup</span>
+              
+          </div>
+          <a href="#" class="scheme-link" target="_blank">Learn More</a>
+      </div>
+  
+      <div class="scheme-card">
+          <div class="scheme-header">
+              <div class="scheme-icon">
+                  <i class="fas fa-heart"></i>
+              </div>
+              <h3 class="scheme-title">Maharashtra Mahatma Jyotiba Phule Jan Arogya Yojana</h3>
+          </div>
+          <div class="scheme-details">
+              Health insurance scheme for Maharashtra residents below poverty line.
+          </div>
+          <div class="scheme-tags">
+              
+                  <span class="scheme-tag">State Scheme</span>
+              
+                  <span class="scheme-tag">Health Insurance</span>
+              
+          </div>
+          <a href="#" class="scheme-link" target="_blank">Learn More</a>
+      </div>
+  </div>
+  </div>
+</div>
+
+<script>
+
+const schemesData = [{
+      title: "Ayushman Bharat Pradhan Mantri Jan Arogya Yojana (AB-PMJAY)",
+      details: "Provides health insurance cover of up to ₹5 lakh per family per year for secondary and tertiary care hospitalization.",
+      tags: ["Health Insurance", "Hospitalization"],
+      states: ["All India"],
+      link: "https://www.pmjay.gov.in/"
+  }, {
+      title: "Janani Suraksha Yojana (JSY)",
+      details: "A safe motherhood intervention under the National Health Mission to reduce maternal and neonatal mortality.",
+      tags: ["Maternal Health", "Financial Assistance"],
+      states: ["All India"],
+      link: "https://nhm.gov.in/maternal-health/janani-suraksha-yojana.html"
+  }, {
+      title: "Pradhan Mantri Swasthya Suraksha Yojana (PMSSY)",
+      details: "Aims at correcting the imbalances in the availability of affordable healthcare facilities in different parts of the country.",
+      tags: ["Affordable Healthcare", "Healthcare Services"],
+      states: ["All India"],
+      link: "https://pmssy.nic.in/"
+  }, {
+      title: "Rashtriya Arogya Nidhi (RAN)",
+      details: "Provides financial assistance to patients, living below poverty line and who are suffering from major life-threatening diseases, to receive medical treatment at any of the super specialty hospitals/institutions or other Government hospitals.",
+      tags: ["Financial Assistance", "Life-Threatening Diseases"],
+      states: ["All India"],
+      link: "https://main.mohfw.gov.in/organisation/departments-health-and-family-welfare/department-health-research/rashtriya-arogya"
+  }, {
+      title: "Andhra Pradesh - Dr. YSR Aarogyasri Health Care Trust",
+      details: "Provides free medical treatment for identified diseases and procedures to eligible families.",
+      tags: ["Health Insurance", "Free Treatment"],
+      states: ["Andhra Pradesh"],
+      link: "https://ysraarogyasri.ap.gov.in/"
+  }, {
+      title: "Assam - Atal Amrit Abhiyan",
+      details: "Provides cashless medical care up to ₹2 lakh per individual per year for critical illnesses.",
+      tags: ["Cashless Treatment", "Critical Illness"],
+      states: ["Assam"],
+      link: "https://nhm.assam.gov.in/portlets/atal-amrit-abhiyan"
+  }, {
+      title: "Kerala - Karunya Arogya Suraksha Padhathi (KASP)",
+      details: "Provides comprehensive health insurance coverage to families identified as Below Poverty Line (BPL).",
+      tags: ["Health Insurance", "BPL Families"],
+      states: ["Kerala"],
+      link: "https://arogyakeralam.gov.in/"
+  }, {
+      title: "Tamil Nadu - Chief Minister's Comprehensive Health Insurance Scheme",
+      details: "Provides free medical and surgical treatment in empanelled hospitals to eligible individuals.",
+      tags: ["Health Insurance", "Free Treatment"],
+      states: ["Tamil Nadu"],
+      link: "https://www.cmchistn.com/"
+  }, {
+      title: "Karnataka - Arogya Karnataka Yojana",
+      details: "Provides universal health coverage, ensuring access to quality healthcare services for all residents of Karnataka.",
+      tags: ["Universal Health Coverage", "Healthcare Services"],
+      states: ["Karnataka"],
+      link: "https://arogya.karnataka.gov.in/"
+  }, {
+      title: "Gujarat - Mukhyamantri Amrutam Yojana",
+      details: "Provides financial assistance for medical treatment to families below the poverty line.",
+      tags: ["Financial Assistance", "BPL Families"],
+      states: ["Gujarat"],
+      link: "https://magujarat.co.in/mukhyamantri-amrutum-yojana/"
+  }, {
+      title: "Rajasthan - Chiranjeevi Swasthya Bima Yojana",
+      details: "Provides health insurance coverage to the families of the state.",
+      tags: ["Health Insurance", "Financial Assistance"],
+      states: ["Rajasthan"],
+      link: "https://chiranjeevi.rajasthan.gov.in/"
+  }, {
+      title: "Maharashtra - Mahatma Jyotiba Phule Jan Arogya Yojana (MJPJAY)",
+      details: "Provides cashless insurance for medical treatment.",
+      tags: ["Health Insurance", "Cashless Treatment"],
+      states: ["Maharashtra"],
+      link: "https://www.jeevandayee.gov.in/"
+  }, {
+      title: "Telangana - Aarogyasri Health Care Trust",
+      details: "Provides financial protection to families living below the poverty line for the treatment of serious ailments.",
+      tags: ["Health Insurance", "Financial Assistance", "BPL Families"],
+      states: ["Telangana"],
+      link: "https://www.aarogyasri.telangana.gov.in/"
+  }, {
+      title: "Haryana - Mukhyamantri Parivar Swasthya Suraksha Yojana",
+      details: "Provides comprehensive health checkups to families in the state.",
+      tags: ["Health Checkup", "Family Welfare"],
+      states: ["Haryana"],
+      link: "https://haryanahealth.nic.in/"
+  }, {
+      title: "Punjab - Bhagat Puran Singh Sehat Bima Yojana",
+      details: "Provides health insurance coverage to families.",
+      tags: ["Health Insurance", "Financial Assistance"],
+      states: ["Punjab"],
+      link: "https://www.sha.punjab.gov.in/"
+  }, {
+      title: "West Bengal - Swasthya Sathi",
+      details: "Provides basic health coverage for all residents of the state.",
+      tags: ["Health Insurance", "Universal Coverage"],
+      states: ["West Bengal"],
+      link: "https://swasthyasathi.gov.in/"
+  }, {
+      title: "Odisha - Biju Swasthya Kalyan Yojana",
+      details: "Provides health assurance to all, with emphasis on cashless and quality healthcare.",
+      tags: ["Health Insurance", "Cashless Treatment", "Quality Healthcare"],
+      states: ["Odisha"],
+      link: "https://bsky.odisha.gov.in/"
+  }, {
+      title: "Chhattisgarh - Dr. Khubchand Baghel Swasthya Sahayata Yojana",
+      details: "Provides financial assistance to families for medical treatment.",
+      tags: ["Health Insurance", "Financial Assistance"],
+      states: ["Chhattisgarh"],
+      link: "https://health.cg.gov.in/"
+  }, {
+      title: "Jharkhand - Mukhyamantri Gambhir Bimari Upchar Yojana",
+      details: "Provides financial assistance for the treatment of serious diseases.",
+      tags: ["Health Insurance", "Serious Diseases"],
+      states: ["Jharkhand"],
+      link: "https://health.jharkhand.gov.in/"
+  }, {
+      title: "Uttarakhand - Atal Ayushman Yojana",
+      details: "Provides health insurance cover to residents of the state.",
+      tags: ["Health Insurance"],
+      states: ["Uttarakhand"],
+      link: "https://atalayushmanuttarakhand.org/"
+  }, {
+      title: "Himachal Pradesh - HIMCARE",
+      details: "Provides health insurance cover to families not covered under Ayushman Bharat.",
+      tags: ["Health Insurance"],
+      states: ["Himachal Pradesh"],
+      link: "https://www.nhp.gov.in/HIMCARE_pg"
+  }, {
+      title: "Goa - Deen Dayal Swasthya Seva Yojana",
+      details: "Provides health insurance cover to residents of Goa.",
+      tags: ["Health Insurance"],
+      states: ["Goa"],
+      link: "https://dsssygov.goa.gov.in/"
+  }, {
+      title: "Assam - Ayushman Asom - MMJAY",
+      details: "Provides health insurance cover to families of Assam.",
+      tags: ["Health Insurance"],
+      states: ["Assam"],
+      link: "https://ayushmanasom.assam.gov.in/"
+  }, {
+      title: "Bihar - Mukhyamantri Chikitsa Sahayata Kosh",
+      details: "Provides financial assistance for medical treatment to residents of Bihar.",
+      tags: ["Financial Assistance"],
+      states: ["Bihar"],
+      link: "https://health.bih.nic.in/"
+  }, {
+      title: "Manipur - Chief Ministergi Hakshelgi Tengbang (CMHT)",
+      details: "Provides health insurance cover to residents of Manipur.",
+      tags: ["Health Insurance"],
+      states: ["Manipur"],
+      link: "https://manipur.gov.in/"
+  }, {
+      title: "Meghalaya - Meghalaya Health Insurance Scheme (MHIS)",
+      details: "Provides health insurance cover to residents of Meghalaya.",
+      tags: ["Health Insurance"],
+      states: ["Meghalaya"],
+      link: "https://meghealth.gov.in/"
+  }, {
+      title: "Mizoram - Chief Minister's Universal Health Insurance Scheme (CMUHIS)",
+      details: "Provides health insurance cover to residents of Mizoram.",
+      tags: ["Health Insurance"],
+      states: ["Mizoram"],
+      link: "https://health.mizoram.gov.in/"
+  }, {
+      title: "Nagaland - Chief Minister's Health Insurance Scheme (CMHIS)",
+      details: "Provides health insurance cover to residents of Nagaland.",
+      tags: ["Health Insurance"],
+      states: ["Nagaland"],
+      link: "https://health.nagaland.gov.in/"
+  }, {
+      title: "Tripura - Mukhyamantri Swasthya Seva Prakalpa",
+      details: "Provides health services to the poor and needy people of Tripura.",
+      tags: ["Health Services"],
+      states: ["Tripura"],
+      link: "https://health.tripura.gov.in/"
+  }, {
+      title: "Sikkim - Sikkim Swasthya Bima Yojana (SSBY)",
+      details: "Provides health insurance cover to the people of Sikkim.",
+      tags: ["Health Insurance"],
+      states: ["Sikkim"],
+      link: "https://sikkim.gov.in/"
+  },
+      // ... (Add other schemes here)
+  ];
+
+  function displaySchemes(schemes) {
+      const schemesGrid = document.getElementById("schemes-grid");
+      schemesGrid.innerHTML = ""; // Clear existing schemes
+
+      schemes.forEach(scheme => {
+          const schemeCard = document.createElement("div");
+          schemeCard.classList.add("scheme-card");
+
+          schemeCard.innerHTML = `
+              <div class="scheme-header">
+                  <i class="fas fa-hand-holding-heart scheme-icon"></i>
+                  <h3 class="scheme-title">${scheme.title}</h3>
+              </div>
+              <div class="scheme-details">
+                  ${scheme.details}
+              </div>
+              <div class="scheme-tags">
+                  ${scheme.tags.map(tag => `<span class="scheme-tag">${tag}</span>`).join("")}
+              </div>
+              <a href="${scheme.link}" class="scheme-link" target="_blank">Learn More</a>
+          `;
+
+          schemesGrid.appendChild(schemeCard);
+      });
+  }
+
+  function filterSchemes() {
+      const selectedState = document.getElementById("state-filter").value;
+
+      let filteredSchemes = [];
+
+      if (selectedState === "") {
+          // If "Select State" is chosen, display all schemes
+          filteredSchemes = schemesData;
+      } else {
+          filteredSchemes = schemesData.filter(scheme =>
+              scheme.states.includes(selectedState)
+          );
+      }
+
+      displaySchemes(filteredSchemes);
+  }
+
+  // Event Listeners
+  document.getElementById("state-filter").addEventListener("change", filterSchemes);
+
+  // Initial display of all schemes
+  displaySchemes(schemesData);
+  
+const schemes = [
+  // Health Insurance Schemes
+  {
+    id: 1,
+    title: "Ayushman Bharat Pradhan Mantri Jan Arogya Yojana (AB PM-JAY)",
+    description: "Health insurance coverage of ₹5 lakh per family per year for secondary and tertiary care hospitalization.",
+    state: "all-india",
+    income: "0-100000",
+    category: ["general", "sc", "st", "obc"],
+    tags: ["Health Insurance", "Hospitalization"],
+    icon: "fa-hospital-user",
+    link: "https://pmjay.gov.in/"
+  },
+  {
+    id: 2,
+    title: "Central Government Health Scheme (CGHS)",
+    description: "Comprehensive medical care to central government employees, pensioners, and their dependents.",
+    state: "all-india",
+    income: "all",
+    category: ["general", "sc", "st", "obc"],
+    tags: ["Health Insurance", "Government Employees"],
+    icon: "fa-user-shield",
+    link: "https://cghs.gov.in/"
+  },
+  {
+    id: 3,
+    title: "Employees' State Insurance Scheme (ESIS)",
+    description: "Self-financing health insurance and social security scheme for Indian workers.",
+    state: "all-india",
+    income: "0-21000",
+    category: ["general", "sc", "st", "obc"],
+    tags: ["Health Insurance", "Workers"],
+    icon: "fa-briefcase-medical",
+    link: "https://www.esic.gov.in/"
+  },
+  {
+    id: 4,
+    title: "Rashtriya Swasthya Bima Yojana (RSBY)",
+    description: "Health insurance coverage up to ₹30,000 for BPL families (now largely merged with PM-JAY).",
+    state: "all-india",
+    income: "0-100000",
+    category: ["general", "sc", "st", "obc"],
+    tags: ["Health Insurance", "BPL Families"],
+    icon: "fa-shield-alt",
+    link: "https://www.india.gov.in/spotlight/rashtriya-swasthya-bima-yojana"
+  },
+  {
+    id: 5,
+    title: "Pradhan Mantri Suraksha Bima Yojana (PMSBY)",
+    description: "Accident insurance with coverage of ₹2 lakh for accidental death or disability.",
+    state: "all-india",
+    income: "all",
+    category: ["general", "sc", "st", "obc"],
+    tags: ["Accident Insurance", "Health Insurance"],
+    icon: "fa-car-crash",
+    link: "https://financialservices.gov.in/beta/en/pmsby"
+  },
+  {
+    id: 6,
+    title: "State Government Health Insurance Schemes",
+    description: "Examples: Tamil Nadu's Chief Minister's Comprehensive Health Insurance Scheme, Kerala's Karunya Arogya Suraksha Padhathi (KASP), Karnataka's Arogya Bhagya, etc.",
+    state: "state-specific",
+    income: "0-100000",
+    category: ["general", "sc", "st", "obc"],
+    tags: ["Health Insurance", "State Schemes"],
+    icon: "fa-map-marker-alt",
+    link: "https://beneficiary.nha.gov.in/"
+  },
+
+  // Maternal & Child Health Programs
+  {
+    id: 7,
+    title: "Pradhan Mantri Matru Vandana Yojana (PMMVY)",
+    description: "Cash incentive of ₹5,000 in three installments for first living child.",
+    state: "all-india",
+    income: "all",
+    category: ["general", "sc", "st", "obc"],
+    tags: ["Maternal Health", "Cash Incentive"],
+    icon: "fa-baby-carriage",
+    link: "https://pmmvy.wcd.gov.in/"
+  },
+  {
+    id: 8,
+    title: "Janani Suraksha Yojana (JSY)",
+    description: "Cash assistance for institutional delivery; ₹1,400 in rural and ₹1,000 in urban areas for low-performing states.",
+    state: "all-india",
+    income: "all",
+    category: ["general", "sc", "st", "obc"],
+    tags: ["Maternal Health", "Cash Assistance"],
+    icon: "fa-female",
+    link: "https://www.nhm.gov.in/index1.php?lang=1&level=3&sublinkid=841&lid=309"
+  },
+  {
+    id: 9,
+    title: "Janani Shishu Suraksha Karyakram (JSSK)",
+    description: "Entitles pregnant women to absolutely free delivery including C-section in public health institutions.",
+    state: "all-india",
+    income: "all",
+    category: ["general", "sc", "st", "obc"],
+    tags: ["Maternal Health", "Free Delivery"],
+    icon: "fa-hospital",
+    link: "https://www.nhm.gov.in/index4.php?lang=1&level=0&linkid=150&lid=171"
+  },
+  {
+    id: 10,
+    title: "LaQshya (Labour Room Quality Improvement Initiative)",
+    description: "Improve quality of care in labour rooms and maternity operation theatres.",
+    state: "all-india",
+    income: "all",
+    category: ["general", "sc", "st", "obc"],
+    tags: ["Maternal Health", "Quality Improvement"],
+    icon: "fa-baby",
+    link: "https://nhm.gov.in/index1.php?lang=1&level=3&sublinkid=1307&lid=690"
+  },
+  {
+    id: 11,
+    title: "Pradhan Mantri Surakshit Matritva Abhiyan (PMSMA)",
+    description: "Free antenatal check-ups by gynecologists/doctors on the 9th of every month at designated government facilities.",
+    state: "all-india",
+    income: "all",
+    category: ["general", "sc", "st", "obc"],
+    tags: ["Maternal Health", "Free Checkup"],
+    icon: "fa-calendar-check",
+    link: "https://pmsma.mohfw.gov.in/"
+  },
+  {
+    id: 12,
+    title: "Rashtriya Bal Swasthya Karyakram (RBSK)",
+    description: "Child health screening and early intervention services for children from birth to 18 years.",
+    state: "all-india",
+    income: "all",
+    category: ["general", "sc", "st", "obc"],
+    tags: ["Child Health", "Early Intervention"],
+    icon: "fa-child",
+    link: "https://rbsk.mohfw.gov.in/"
+  },
+
+  // Disability Support Schemes
+  {
+    id: 13,
+    title: "Assistance to Disabled Persons for Purchase/Fitting of Aids and Appliances (ADIP)",
+    description: "Assistive aids and appliances to persons with disabilities at subsidized rates.",
+    state: "all-india",
+    income: "0-20000",
+    category: ["general", "sc", "st", "obc"],
+    tags: ["Disability Support", "Assistive Devices"],
+    icon: "fa-wheelchair",
+    link: "https://depwd.gov.in/adip/"
+  },
+  {
+    id: 14,
+    title: "Deendayal Disabled Rehabilitation Scheme (DDRS)",
+    description: "Financial assistance to NGOs for providing education, vocational training, and rehabilitation of persons with disabilities.",
+    state: "all-india",
+    income: "all",
+    category: ["general", "sc", "st", "obc"],
+    tags: ["Disability Support", "Rehabilitation"],
+    icon: "fa-hands-helping",
+    link: "https://depwd.gov.in/ddrs/"
+  },
+  {
+    id: 15,
+    title: "Unique Disability ID (UDID) Project",
+    description: "Create a national database of persons with disabilities and issue unique ID cards.",
+    state: "all-india",
+    income: "all",
+    category: ["general", "sc", "st", "obc"],
+    tags: ["Disability Support", "ID Card"],
+    icon: "fa-id-card",
+    link: "https://www.swavlambancard.gov.in/"
+  },
+  {
+    id: 16,
+    title: "Scheme of National Awards for Empowerment of Persons with Disabilities",
+    description: "Cash awards ranging from ₹1 lakh to ₹10 lakh, citations, and certificates.",
+    state: "all-india",
+    income: "all",
+    category: ["general", "sc", "st", "obc"],
+    tags: ["Disability Support", "Awards"],
+    icon: "fa-award",
+    link: "https://depwd.gov.in/year-wise-national-awards/"
+  },
+  {
+    id: 17,
+    title: "Inclusive Education for Disabled at Secondary Stage (IEDSS)",
+    description: "Enables students with disabilities to complete secondary education in an inclusive environment.",
+    state: "all-india",
+    income: "all",
+    category: ["general", "sc", "st", "obc"],
+    tags: ["Disability Support", "Education"],
+    icon: "fa-graduation-cap",
+    link: "https://www.education.gov.in/iedss"
+  },
+  {
+    id: 18,
+    title: "Disability Pension Schemes",
+    description: "Indira Gandhi National Disability Pension Scheme provides ₹300-₹500/month to BPL persons with severe disabilities.",
+    state: "all-india",
+    income: "0-100000",
+    category: ["general", "sc", "st", "obc"],
+    tags: ["Disability Support", "Pension"],
+    icon: "fa-money-bill-wave",
+    link: "https://www.myscheme.gov.in/schemes/igndps"
+  },
+
+  // Chronic Disease Management Programs
+  {
+    id: 19,
+    title: "National Programme for Prevention and Control of Cancer, Diabetes, Cardiovascular Diseases & Stroke (NPCDCS)",
+    description: "Screening, diagnosis, treatment for non-communicable diseases.",
+    state: "all-india",
+    income: "all",
+    category: ["general", "sc", "st", "obc"],
+    tags: ["Chronic Disease", "Screening"],
+    icon: "fa-heartbeat",
+    link: "https://nhm.gov.in/index1.php?lang=1&level=2&sublinkid=1048&lid=604"
+  },
+  {
+    id: 20,
+    title: "National Mental Health Programme (NMHP)",
+    description: "Treatment and rehabilitation services for mental disorders.",
+    state: "all-india",
+    income: "all",
+    category: ["general", "sc", "st", "obc"],
+    tags: ["Mental Health", "Rehabilitation"],
+    icon: "fa-brain",
+    link: "https://mohfw.gov.in"
+  },
+  {
+    id: 21,
+    title: "National Tobacco Control Programme (NTCP)",
+    description: "Tobacco cessation services, enforcement of tobacco control laws.",
+    state: "all-india",
+    income: "all",
+    category: ["general", "sc", "st", "obc"],
+    tags: ["Chronic Disease", "Tobacco Control"],
+    icon: "fa-smoking-ban",
+    link: "https://ntcp.mohfw.gov.in/"
+  },
+  {
+    id: 22,
+    title: "National Programme for Health Care of the Elderly (NPHCE)",
+    description: "Dedicated healthcare for elderly with chronic conditions.",
+    state: "all-india",
+    income: "all",
+    category: ["general", "sc", "st", "obc"],
+    tags: ["Chronic Disease", "Elderly Care"],
+    icon: "fa-user-md",
+    link: "https://mohfw.gov.in"
+  },
+  {
+    id: 23,
+    title: "National Programme for Prevention and Control of Fluorosis (NPPCF)",
+    description: "Screening, diagnosis, management of fluorosis.",
+    state: "all-india",
+    income: "all",
+    category: ["general", "sc", "st", "obc"],
+    tags: ["Chronic Disease", "Fluorosis"],
+    icon: "fa-tint",
+    link: "https://dghs.mohfw.gov.in"
+  },
+  {
+    id: 24,
+    title: "Revised National TB Control Programme (RNTCP) / National TB Elimination Programme (NTEP)",
+    description: "Free diagnosis and treatment for tuberculosis.",
+    state: "all-india",
+    income: "all",
+    category: ["general", "sc", "st", "obc"],
+    tags: ["Chronic Disease", "TB Control"],
+    icon: "fa-lungs",
+    link: "https://tbcindia.gov.in/"
+  },
+
+  // Prescription & Treatment Cost Support
+  {
+    id: 25,
+    title: "Pradhan Mantri Bhartiya Janaushadhi Pariyojana (PMBJP)",
+    description: "Generic medicines at affordable prices (50-90% less than market rates).",
+    state: "all-india",
+    income: "all",
+    category: ["general", "sc", "st", "obc"],
+    tags: ["Affordable Medicines", "Generic Drugs"],
+    icon: "fa-pills",
+    link: "https://janaushadhi.gov.in/"
+  },
+  {
+    id: 26,
+    title: "Health Minister's Discretionary Grant",
+    description: "Financial assistance up to ₹1.25 lakh for patients below poverty line.",
+    state: "all-india",
+    income: "0-100000",
+    category: ["general", "sc", "st", "obc"],
+    tags: ["Financial Assistance", "BPL"],
+    icon: "fa-hand-holding-usd",
+    link: "https://www.mohfw.gov.in"
+  },
+  {
+    id: 27,
+    title: "Rashtriya Arogya Nidhi (RAN)",
+    description: "Financial assistance up to ₹15 lakh for BPL patients.",
+    state: "all-india",
+    income: "0-100000",
+    category: ["general", "sc", "st", "obc"],
+    tags: ["Financial Assistance", "BPL"],
+    icon: "fa-rupee-sign",
+    link: "https://www.mohfw.gov.in"
+  },
+  {
+    id: 28,
+    title: "Health Research Scheme",
+    description: "Financial assistance for patients participating in treatment trials.",
+    state: "all-india",
+    income: "all",
+    category: ["general", "sc", "st", "obc"],
+    tags: ["Financial Assistance", "Research"],
+    icon: "fa-flask",
+    link: "https://www.icmr.gov.in/"
+  },
+  {
+    id: 29,
+    title: "State Illness Assistance Funds",
+    description: "Examples: Tamil Nadu Chief Minister's Comprehensive Health Insurance, Delhi Arogya Kosh, Kerala Karunya Benevolent Fund.",
+    state: "state-specific",
+    income: "0-100000",
+    category: ["general", "sc", "st", "obc"],
+    tags: ["Financial Assistance", "State Schemes"],
+    icon: "fa-hand-holding-medical",
+    link: "https://beneficiary.nha.gov.in/"
+  },
+  {
+    id: 30,
+    title: "CGHS Wellness Centers & Free Medicines",
+    description: "Free medicines and treatments at CGHS Wellness Centers.",
+    state: "all-india",
+    income: "all",
+    category: ["general", "sc", "st", "obc"],
+    tags: ["Free Medicines", "Government Employees"],
+    icon: "fa-clinic-medical",
+    link: "https://cghs.gov.in/"
+  },
+
+  
+  {
+    id: 32,
+    title: "National Programme for Prevention and Control of Deafness (NPPCD)",
+    description: "Prevention and control of hearing impairment and deafness.",
+    state: "all-india",
+    income: "all",
+    category: ["general", "sc", "st", "obc"],
+    tags: ["Deafness", "Hearing Impairment"],
+    icon: "fa-deaf",
+    link: "https://dghs.mohfw.gov.in"
+  },
+
+  {
+    id: 33,
+    title: "National Programme for Prevention and Control of Cancer, Diabetes, Cardiovascular Diseases and Stroke (NPCDCS)",
+    description: "Screening, diagnosis, and treatment for non-communicable diseases.",
+    state: "all-india",
+    income: "all",
+    category: ["general", "sc", "st", "obc"],
+    tags: ["NCDs", "Chronic Diseases"],
+    icon: "fa-heartbeat",
+    link: "https://nhm.gov.in"
+  },
+  {
+    id: 34,
+    title: "National Programme for Control of Blindness and Visual Impairment (NPCBVI)",
+    description: "Prevention and treatment of blindness and visual impairment.",
+    state: "all-india",
+    income: "all",
+    category: ["general", "sc", "st", "obc"],
+    tags: ["Blindness", "Visual Impairment"],
+    icon: "fa-eye",
+    link: "https://npcbvi.gov.in/"
+  },
+  {
+    id: 35,
+    title: "National Programme for Prevention and Control of Fluorosis (NPPCF)",
+    description: "Screening, diagnosis, and management of fluorosis.",
+    state: "all-india",
+    income: "all",
+    category: ["general", "sc", "st", "obc"],
+    tags: ["Fluorosis", "Public Health"],
+    icon: "fa-tooth",
+    link: "https://dghs.mohfw.gov.in"
+  },
+
+  {
+    id: 37,
+    title: "National Programme for Prevention and Control of Deafness (NPPCD)",
+    description: "Prevention and control of hearing impairment and deafness.",
+    state: "all-india",
+    income: "all",
+    category: ["general", "sc", "st", "obc"],
+    tags: ["Deafness", "Hearing Impairment"],
+    icon: "fa-deaf",
+    link: "https://dghs.mohfw.gov.in"
+  },
+  {
+    id: 38,
+    title: "National Programme for Prevention and Control of Burn Injuries (NPPMBI)",
+    description: "Prevention, treatment, and rehabilitation of burn injuries.",
+    state: "all-india",
+    income: "all",
+    category: ["general", "sc", "st", "obc"],
+    tags: ["Burn Injuries", "Rehabilitation"],
+    icon: "fa-burn",
+    link: "https://mohfw.gov.in"
+  },
+  {
+    id: 39,
+    title: "National Programme for Prevention and Control of Fluorosis (NPPCF)",
+    description: "Screening, diagnosis, and management of fluorosis.",
+    state: "all-india",
+    income: "all",
+    category: ["general", "sc", "st", "obc"],
+    tags: ["Fluorosis", "Public Health"],
+    icon: "fa-tooth",
+    link: "https://dghs.mohfw.gov.in"
+  },
+  {
+    id: 40,
+    title: "National Programme for Palliative Care (NPPC)",
+    description: "Improve access to palliative care for patients with chronic illnesses.",
+    state: "all-india",
+    income: "all",
+    category: ["general", "sc", "st", "obc"],
+    tags: ["Palliative Care", "Chronic Illness"],
+    icon: "fa-hand-holding-heart",
+    link: "https://mohfw.gov.in"
+  },
+  {
+    id: 41,
+    title: "National Oral Health Programme (NOHP)",
+    description: "Promote oral health and prevent oral diseases.",
+    state: "all-india",
+    income: "all",
+    category: ["general", "sc", "st", "obc"],
+    tags: ["Oral Health", "Dental Care"],
+    icon: "fa-tooth",
+    link: "https://dghs.mohfw.gov.in"
+  },
+  {
+    id: 42,
+    title: "National Programme for Prevention and Management of Burn Injuries (NPPMBI)",
+    description: "Prevention, treatment, and rehabilitation of burn injuries.",
+    state: "all-india",
+    income: "all",
+    category: ["general", "sc", "st", "obc"],
+    tags: ["Burn Injuries", "Rehabilitation"],
+    icon: "fa-burn",
+    link: "https://mohfw.gov.in"
+  },
+  {
+    id: 43,
+    title: "National Programme for Healthcare of Elderly (NPHCE)",
+    description: "Dedicated healthcare for elderly with chronic conditions.",
+    state: "all-india",
+    income: "all",
+    category: ["general", "sc", "st", "obc"],
+    tags: ["Elderly Care", "Chronic Conditions"],
+    icon: "fa-user-nurse",
+    link: "https://mohfw.gov.in"
+  },
+  {
+    id: 44,
+    title: "National Programme for Prevention and Control of Deafness (NPPCD)",
+    description: "Prevention and control of hearing impairment and deafness.",
+    state: "all-india",
+    income: "all",
+    category: ["general", "sc", "st", "obc"],
+    tags: ["Deafness", "Hearing Impairment"],
+    icon: "fa-deaf",
+    link: "https://dghs.mohfw.gov.in"
+  },
+  {
+    id: 45,
+    title: "National Programme for Prevention and Control of Cancer, Diabetes, Cardiovascular Diseases and Stroke (NPCDCS)",
+    description: "Screening, diagnosis, and treatment for non-communicable diseases.",
+    state: "all-india",
+    income: "all",
+    category: ["general", "sc", "st", "obc"],
+    tags: ["NCDs", "Chronic Diseases"],
+    icon: "fa-heartbeat",
+    link: "https://nhm.gov.in"
+  },
+  {
+    id: 46,
+    title: "National Programme for Control of Blindness and Visual Impairment (NPCBVI)",
+    description: "Prevention and treatment of blindness and visual impairment.",
+    state: "all-india",
+    income: "all",
+    category: ["general", "sc", "st", "obc"],
+    tags: ["Blindness", "Visual Impairment"],
+    icon: "fa-eye",
+    link: "https://npcbvi.gov.in/"
+  },
+  {
+    id: 47,
+    title: "National Programme for Prevention and Control of Fluorosis (NPPCF)",
+    description: "Screening, diagnosis, and management of fluorosis.",
+    state: "all-india",
+    income: "all",
+    category: ["general", "sc", "st", "obc"],
+    tags: ["Fluorosis", "Public Health"],
+    icon: "fa-tooth",
+    link: "https://dghs.mohfw.gov.in"
+  },
+  {
+    id: 48,
+    title: "National Programme for Palliative Care (NPPC)",
+    description: "Improve access to palliative care for patients with chronic illnesses.",
+    state: "all-india",
+    income: "all",
+    category: ["general", "sc", "st", "obc"],
+    tags: ["Palliative Care", "Chronic Illness"],
+    icon: "fa-hand-holding-heart",
+    link: "https://mohfw.gov.in"
+  },
+  {
+    id: 49,
+    title: "National Oral Health Programme (NOHP)",
+    description: "Promote oral health and prevent oral diseases.",
+    state: "all-india",
+    income: "all",
+    category: ["general", "sc", "st", "obc"],
+    tags: ["Oral Health", "Dental Care"],
+    icon: "fa-tooth",
+    link: "https://dghs.mohfw.gov.in"
+  },
+  {
+    id: 50,
+    title: "National Programme for Prevention and Management of Burn Injuries (NPPMBI)",
+    description: "Prevention, treatment, and rehabilitation of burn injuries.",
+    state: "all-india",
+    income: "all",
+    category: ["general", "sc", "st", "obc"],
+    tags: ["Burn Injuries", "Rehabilitation"],
+    icon: "fa-burn",
+    link: "https://mohfw.gov.in"
+  },
+  {
+    id: 51,
+    title: "National Programme for Healthcare of Elderly (NPHCE)",
+    description: "Dedicated healthcare for elderly with chronic conditions.",
+    state: "all-india",
+    income: "all",
+    category: ["general", "sc", "st", "obc"],
+    tags: ["Elderly Care", "Chronic Conditions"],
+    icon: "fa-user-nurse",
+    link: "https://mohfw.gov.in"
+  },
+  {
+    id: 52,
+    title: "National Programme for Prevention and Control of Deafness (NPPCD)",
+    description: "Prevention and control of hearing impairment and deafness.",
+    state: "all-india",
+    income: "all",
+    category: ["general", "sc", "st", "obc"],
+    tags: ["Deafness", "Hearing Impairment"],
+    icon: "fa-deaf",
+    link: "https://dghs.mohfw.gov.in"
+  },
+  {
+    id: 53,
+    title: "National Programme for Prevention and Control of Cancer, Diabetes, Cardiovascular Diseases and Stroke (NPCDCS)",
+    description: "Screening, diagnosis, and treatment for non-communicable diseases.",
+    state: "all-india",
+    income: "all",
+    category: ["general", "sc", "st", "obc"],
+    tags: ["NCDs", "Chronic Diseases"],
+    icon: "fa-heartbeat",
+    link: "https://nhm.gov.in"
+  },
+  {
+    id: 54,
+    title: "National Programme for Control of Blindness and Visual Impairment (NPCBVI)",
+    description: "Prevention and treatment of blindness and visual impairment.",
+    state: "all-india",
+    income: "all",
+    category: ["general", "sc", "st", "obc"],
+    tags: ["Blindness", "Visual Impairment"],
+    icon: "fa-eye",
+    link: "https://npcbvi.gov.in/"
+  },
+  {
+    id: 55,
+    title: "National Programme for Prevention and Control of Fluorosis (NPPCF)",
+    description: "Screening, diagnosis, and management of fluorosis.",
+    state: "all-india",
+    income: "all",
+    category: ["general", "sc", "st", "obc"],
+    tags: ["Fluorosis", "Public Health"],
+    icon: "fa-tooth",
+    link: "https://dghs.mohfw.gov.in"
+  },
+  {
+    id: 56,
+    title: "National Programme for Palliative Care (NPPC)",
+    description: "Improve access to palliative care for patients with chronic illnesses.",
+    state: "all-india",
+    income: "all",
+    category: ["general", "sc", "st", "obc"],
+    tags: ["Palliative Care", "Chronic Illness"],
+    icon: "fa-hand-holding-heart",
+    link: "https://mohfw.gov.in"
+  },
+  {
+    id: 57,
+    title: "National Oral Health Programme (NOHP)",
+    description: "Promote oral health and prevent oral diseases.",
+    state: "all-india",
+    income: "all",
+    category: ["general", "sc", "st", "obc"],
+    tags: ["Oral Health", "Dental Care"],
+    icon: "fa-tooth",
+    link: "https://dghs.mohfw.gov.in"
+  },
+  {
+    id: 58,
+    title: "National Programme for Prevention and Management of Burn Injuries (NPPMBI)",
+    description: "Prevention, treatment, and rehabilitation of burn injuries.",
+    state: "all-india",
+    income: "all",
+    category: ["general", "sc", "st", "obc"],
+    tags: ["Burn Injuries", "Rehabilitation"],
+    icon: "fa-burn",
+    link: "https://mohfw.gov.in"
+  },
+  {
+    id: 59,
+    title: "National Programme for Healthcare of Elderly (NPHCE)",
+    description: "Dedicated healthcare for elderly with chronic conditions.",
+    state: "all-india",
+    income: "all",
+    category: ["general", "sc", "st", "obc"],
+    tags: ["Elderly Care", "Chronic Conditions"],
+    icon: "fa-user-nurse",
+    link: "https://mohfw.gov.in"
+  },
+  {
+    id: 60,
+    title: "National Programme for Prevention and Control of Deafness (NPPCD)",
+    description: "Prevention and control of hearing impairment and deafness.",
+    state: "all-india",
+    income: "all",
+    category: ["general", "sc", "st", "obc"],
+    tags: ["Deafness", "Hearing Impairment"],
+    icon: "fa-deaf",
+    link: "https://dghs.mohfw.gov.in"
+  }
+
+ 
+
+];
+
+// Function to render schemes
+function renderSchemes(filteredSchemes) {
+  const schemesGrid = document.getElementById('schemes-grid');
+  schemesGrid.innerHTML = filteredSchemes.map(scheme => `
+      <div class="scheme-card">
+          <div class="scheme-header">
+              <div class="scheme-icon">
+                  <i class="fas ${scheme.icon}"></i>
+              </div>
+              <h3 class="scheme-title">${scheme.title}</h3>
+          </div>
+          <div class="scheme-details">
+              ${scheme.description}
+          </div>
+          <div class="scheme-tags">
+              ${scheme.tags.map(tag => `
+                  <span class="scheme-tag">${tag}</span>
+              `).join('')}
+          </div>
+          <a href="${scheme.link}" class="scheme-link" target="_blank">Learn More</a>
+      </div>
+  `).join('');
+}
+
+// Filter functionality
+function filterSchemes() {
+  const searchTerm = document.getElementById('scheme-search').value.toLowerCase();
+  const stateFilter = document.getElementById('state-filter').value;
+  const incomeFilter = document.getElementById('income-filter').value;
+  const categoryFilter = document.getElementById('category-filter').value;
+
+  const filteredSchemes = schemes.filter(scheme => {
+      const matchesSearch = scheme.title.toLowerCase().includes(searchTerm) ||
+                          scheme.description.toLowerCase().includes(searchTerm);
+      const matchesState = !stateFilter || scheme.state === stateFilter;
+      const matchesIncome = !incomeFilter || scheme.income === incomeFilter || scheme.income === 'all';
+      const matchesCategory = !categoryFilter || scheme.category.includes(categoryFilter);
+
+      return matchesSearch && matchesState && matchesIncome && matchesCategory;
+  });
+
+  renderSchemes(filteredSchemes);
+}
+
+// Event listeners
+document.addEventListener('DOMContentLoaded', () => {
+  renderSchemes(schemes);
+
+  document.getElementById('scheme-search').addEventListener('input', filterSchemes);
+  document.getElementById('state-filter').addEventListener('change', filterSchemes);
+  document.getElementById('income-filter').addEventListener('change', filterSchemes);
+  document.getElementById('category-filter').addEventListener('change', filterSchemes);
+
+  document.getElementById('reset-filters').addEventListener('click', () => {
+      document.getElementById('scheme-search').value = '';
+      document.getElementById('state-filter').value = '';
+      document.getElementById('income-filter').value = '';
+      document.getElementById('category-filter').value = '';
+      renderSchemes(schemes);
+  });
+});
+</script>
+
+
+ 
+
+
+<div class="container" id="schemes">
+  <h1>Indian Government Health Guidelines & Financial Support Programs</h1>
+
+  <div class="guidelines-grid">
+    
+    <!-- Box 2 -->
+    <div class="guideline-box">
+      <div class="guideline-header">
+        Maternal & Child Health Programs
+        <button class="show-button" onclick="toggleContent(this)">Show More</button>
+      </div>
+      <div class="guideline-content">
+        <div class="scheme-card">
+          <div class="name">
+          <h4>1. Pradhan Mantri Matru Vandana Yojana (PMMVY)</h4>
+          <img src="https://images.ctfassets.net/uwf0n1j71a7j/3of11h5CPNlBXSSsfVKJl4/ccd206609c735d70a7df236bf5113d71/pradhan-mantri-matru-vandana-yojana.png">
+          </div>
+          <div class="scheme-detail">
+            <strong>Benefit:</strong> Cash incentive of ₹5,000 in three installments for first living child.
+          </div>
+          <div class="scheme-detail">
+            <strong>Eligibility:</strong> Pregnant women and lactating mothers, excluding those who receive similar benefits under other schemes.
+          </div>
+          <div class="scheme-detail">
+            <strong>Process:</strong> First installment (₹1,000) at early registration, second (₹2,000) at 6 months with at least 1 ANC, third (₹2,000) after childbirth registration and first vaccination.
+          </div>
+          <div class="scheme-detail">
+            <strong>Application:</strong> Apply at Anganwadi centers or health facilities with Aadhaar card, bank account, and ID proof.
+          </div>
+          <div class="scheme-detail">
+              <strong>More Info:</strong><a href="https://pmmvy.wcd.gov.in/">https://pmmvy.wcd.gov.in/</a>
+          </div>
+        </div>
+
+        <div class="scheme-card">
+          <div class="name">
+          <h4>2. Janani Suraksha Yojana (JSY)</h4>
+          <img src="https://www.impactguru.com/info/wp-content/uploads/2023/03/Janani-Suraksha-Yojana-Scheme-800x600-1.jpg">
+          </div>
+          <div class="scheme-detail">
+            <strong>Benefit:</strong> Cash assistance for institutional delivery; ₹1,400 in rural and ₹1,000 in urban areas for low-performing states; ₹700 in rural and ₹600 in urban areas for high-performing states.
+          </div>
+          <div class="scheme-detail">
+            <strong>Eligibility:</strong> All pregnant women in low-performing states; BPL, SC/ST women in high-performing states.
+          </div>
+          <div class="scheme-detail">
+            <strong>Components:</strong> Free delivery, free C-section, free drugs and consumables, free diagnostics, free diet during stay, free transport.
+          </div>
+          <div class="scheme-detail">
+            <strong>Application:</strong> Register at nearest health center with ID proof, BPL card (if applicable), and bank account details.
+          </div>
+          <div class="scheme-detail">
+              <strong>More Info:</strong><a href="https://www.nhm.gov.in/index1.php?lang=1&level=3&sublinkid=841&lid=309">https://www.nhm.gov.in/index1.php?lang=1&level=3&sublinkid=841&lid=309</a>
+          </div>
+        </div>
+
+        <div class="scheme-card">
+          <div class="name">
+          <h4>3. Janani Shishu Suraksha Karyakram (JSSK)</h4>
+          <img src="https://www.godigit.com/content/dam/godigit/directportal/en/contenthm/janani-shishu-suraksha-yojana.jpg">
+          </div>
+          <div class="scheme-detail">
+            <strong>Benefit:</strong> Entitles pregnant women to absolutely free delivery including C-section in public health institutions.
+          </div>
+          <div class="scheme-detail">
+            <strong>Eligibility:</strong> All pregnant women and sick newborns accessing public health institutions.
+          </div>
+          <div class="scheme-detail">
+            <strong>Services:</strong> Free drugs, consumables, diagnostics, blood, diet, transport to and from facility, exemption from all user charges.
+          </div>
+          <div class="scheme-detail">
+            <strong>Application:</strong> No formal application; services provided at all government hospitals.
+          </div>
+          <div class="scheme-detail">
+              <strong>More Info:</strong><a href="https://www.nhm.gov.in/index4.php?lang=1&level=0&linkid=150&lid=171">https://www.nhm.gov.in/index4.php?lang=1&level=0&linkid=150&lid=171</a>
+          </div>
+        </div>
+
+        <div class="scheme-card">
+          <div class="name">
+          <h4>4. LaQshya (Labour Room Quality Improvement Initiative)</h4>
+          <img src="https://digitallylearn.com/wp-content/uploads/2019/07/LaQshya-its-Significance-UPSC-IAS-316x200.jpg">
+          </div>
+          <div class="scheme-detail">
+            <strong>Objective:</strong> Improve quality of care in labour rooms and maternity operation theatres.
+          </div>
+          <div class="scheme-detail">
+            <strong>Facilities Covered:</strong> All Medical College Hospitals, District Hospitals, and high case-load CHCs/SDHs.
+          </div>
+          <div class="scheme-detail">
+            <strong>Benefits:</strong> Improved infrastructure, training for healthcare providers, standard protocols, respectful maternity care.
+          </div>
+          <div class="scheme-detail">
+            <strong>Implementation:</strong> Through National Health Mission at identified healthcare facilities.
+          </div>
+          <div class="scheme-detail">
+              <strong>More Info:</strong><a href="https://nhm.gov.in/index1.php?lang=1&level=3&sublinkid=1307&lid=690">https://nhm.gov.in/index1.php?lang=1&level=3&sublinkid=1307&lid=690</a>
+          </div>
+        </div>
+
+        <div class="scheme-card">
+          <div class="name">
+          <h4>5. Pradhan Mantri Surakshit Matritva Abhiyan (PMSMA)</h4>
+          <img src="https://indianews.in/wp-content/uploads/2022/01/Pradhan.jpg">
+          </div>
+          <div class="scheme-detail">
+            <strong>Benefit:</strong> Free antenatal check-ups by gynecologists/doctors on the 9th of every month at designated government facilities.
+          </div>
+          <div class="scheme-detail">
+            <strong>Eligibility:</strong> All pregnant women in 2nd and 3rd trimesters.
+          </div>
+          <div class="scheme-detail">
+            <strong>Services:</strong> Quality ANC including screening for high-risk pregnancies, early detection of complications, free ultrasound, blood and urine tests.
+          </div>
+          <div class="scheme-detail">
+            <strong>Application:</strong> No formal application; visit designated government health facilities on the 9th of each month.
+          </div>
+          <div class="scheme-detail">
+              <strong>More Info:</strong><a href="https://pmsma.mohfw.gov.in/">https://pmsma.mohfw.gov.in/</a>
+          </div>
+        </div>
+
+        <div class="scheme-card">
+          <div class="name">
+          <h4>6. Rashtriya Bal Swasthya Karyakram (RBSK)</h4>
+          <img src="https://www.impactguru.com/info/wp-content/uploads/2023/04/Rashtriya-Bal-Swasthya-Karyakram-RBSK-800-x-600-768x576.jpg">
+          </div>
+          <div class="scheme-detail">
+            <strong>Coverage:</strong> Child health screening and early intervention services for children from birth to 18 years.
+          </div>
+          <div class="scheme-detail">
+            <strong>Eligibility:</strong> All children aged 0-18 years in rural areas and urban slums.
+          </div>
+          <div class="scheme-detail">
+            <strong>Services:</strong> Screening for 4Ds - Defects at birth, Diseases, Deficiencies, Development delays including disabilities; free treatment for 30 identified health conditions.
+          </div>
+          <div class="scheme-detail">
+            <strong>Implementation:</strong> Through dedicated mobile health teams visiting schools and anganwadis regularly.
+          </div>
+          <div class="scheme-detail">
+              <strong>More Info:</strong><a href="https://rbsk.mohfw.gov.in/RBSK/Login/Login.aspx">https://rbsk.mohfw.gov.in/RBSK/Login/Login.aspx</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Box 3 -->
+    <div class="guideline-box">
+      <div class="guideline-header">
+        Disability Support Schemes
+        <button class="show-button" onclick="toggleContent(this)">Show More</button>
+      </div>
+      <div class="guideline-content">
+        <div class="scheme-card">
+          <div class="name">
+          <h4>1. Assistance to Disabled Persons for Purchase/Fitting of Aids and Appliances (ADIP)</h4>
+          <img src="https://www.sarkariyojnaye.com/wp-content/uploads/2022/10/adip-scheme.jpg">
+          </div>
+          <div class="scheme-detail">
+            <strong>Benefit:</strong> Assistive aids and appliances to persons with disabilities at subsidized rates.
+          </div>
+          <div class="scheme-detail">
+            <strong>Eligibility:</strong> 40% disability or more, monthly income below ₹20,000 (varies by income bracket).
+          </div>
+          <div class="scheme-detail">
+            <strong>Coverage:</strong> Devices worth up to ₹10,000 free for income below ₹15,000/month; subsidized rates for others.
+          </div>
+          <div class="scheme-detail">
+            <strong>Application:</strong> Apply at implementing agencies (NGOs/National Institutes) with disability certificate, income proof, and Aadhaar.
+          </div>
+          <div class="scheme-detail">
+              <strong>More Info:</strong><a href="https://depwd.gov.in/adip/">https://depwd.gov.in/adip/</a>
+          </div>
+
+        </div>
+
+        <div class="scheme-card">
+          <div class="name">
+          <h4>2. Deendayal Disabled Rehabilitation Scheme (DDRS)</h4>
+          <img src="https://i0.wp.com/iaspoint.com/wp-content/uploads/2022/12/Deendayal-Disabled-Rehabilitation-Scheme.webp?fit=476%2C269&ssl=1">
+          </div>
+          <div class="scheme-detail">
+            <strong>Benefit:</strong> Financial assistance to NGOs for providing education, vocational training, and rehabilitation of persons with disabilities.
+          </div>
+          <div class="scheme-detail">
+            <strong>Services:</strong> Special schools, vocational training centers, rehabilitation centers, community-based rehabilitation programs, early intervention.
+          </div>
+          <div class="scheme-detail">
+            <strong>Coverage:</strong> 90% of project cost funded by the government.
+          </div>
+          <div class="scheme-detail">
+            <strong>Access:</strong> Services available through registered NGOs implementing the scheme.
+          </div>
+          <div class="scheme-detail">
+              <strong>More Info:</strong><a href="https://depwd.gov.in/ddrs/">https://depwd.gov.in/ddrs/</a>
+          </div>
+        </div>
+
+        <div class="scheme-card">
+          <div class="name">
+          <h4>3. Unique Disability ID (UDID) Project</h4>
+          <img src="https://cdndailyexcelsior.b-cdn.net/wp-content/uploads/2021/05/PERSON.jpg">
+          </div>
+          <div class="scheme-detail">
+            <strong>Purpose:</strong> Create a national database of persons with disabilities and issue unique ID cards.
+          </div>
+          <div class="scheme-detail">
+            <strong>Benefits:</strong> Online disability certificate, tracking benefits across schemes, simplified procedures.
+          </div>
+          <div class="scheme-detail">
+            <strong>Eligibility:</strong> All persons with benchmark disabilities (40% or more).
+          </div>
+          <div class="scheme-detail">
+            <strong>Application:</strong> Apply online at www.swavlambancard.gov.in with Aadhaar, photographs, existing disability certificate, etc.
+          </div>
+          <div class="scheme-detail">
+              <strong>More Info:</strong><a href="https://www.swavlambancard.gov.in/">https://www.swavlambancard.gov.in/</a>
+          </div>
+        </div>
+
+        <div class="scheme-card">
+          <div class="name">
+          <h4>4. Scheme of National Awards for Empowerment of Persons with Disabilities</h4>
+          <img src="https://i.ytimg.com/vi/rNfHID2HPzw/maxresdefault.jpg">
+          </div>
+          <div class="scheme-detail">
+            <strong>Benefit:</strong> Cash awards ranging from ₹1 lakh to ₹10 lakh, citations, and certificates.
+          </div>
+          <div class="scheme-detail">
+            <strong>Categories:</strong> Individual excellence, best employers, placement agencies, technological innovation, barrier-free creation, etc.
+          </div>
+          <div class="scheme-detail">
+            <strong>Selection:</strong> Through national selection committees.
+          </div>
+          <div class="scheme-detail">
+            <strong>Application:</strong> Nominations submitted to Ministry of Social Justice and Empowerment by specified dates.
+          </div>
+          <div class="scheme-detail">
+              <strong>More Info:</strong><a href="https://depwd.gov.in/year-wise-national-awards/">https://depwd.gov.in/year-wise-national-awards/</a>
+          </div>
+        </div>
+
+        <div class="scheme-card">
+          <div class="name">
+          <h4>5. Inclusive Education for Disabled at Secondary Stage (IEDSS)</h4>
+          <img src="https://th.bing.com/th/id/OIP.iguvKlx9ujpe9LmZVzrF5QHaEc?rs=1&pid=ImgDetMain">
+          </div>
+          <div class="scheme-detail">
+            <strong>Benefit:</strong> Enables students with disabilities to complete secondary education in an inclusive environment.
+          </div>
+          <div class="scheme-detail">
+            <strong>Eligibility:</strong> Students with disabilities aged 14+ in classes IX to XII.
+          </div>
+          <div class="scheme-detail">
+            <strong>Provisions:</strong> ₹3,000/year/student for books and materials, ₹10,000/school for equipments, removal of architectural barriers, resource teachers.
+          </div>
+          <div class="scheme-detail">
+            <strong>Implementation:</strong> Through State Education Departments in government and government-aided schools.
+          </div>
+          <div class="scheme-detail">
+              <strong>More Info:</strong><a href="https://www.education.gov.in/iedss">https://www.education.gov.in/iedss</a>
+          </div>
+        </div>
+
+        <div class="scheme-card">
+          <div class="name">
+          <h4>6. Disability Pension Schemes</h4>
+          <img src="https://currentaffairs.adda247.com/wp-content/uploads/multisite/sites/5/2023/07/05210130/Indira-Gandhi-National-Disability-Pension-Scheme.jpg">
+          </div>
+          <div class="scheme-detail">
+            <strong>National:</strong> Indira Gandhi National Disability Pension Scheme provides ₹300-₹500/month to BPL persons with severe disabilities.
+          </div>
+          <div class="scheme-detail">
+            <strong>State Schemes:</strong> Delhi (₹2,500/month), Tamil Nadu (₹1,000-₹2,000/month), Kerala (₹1,600/month), etc.
+          </div>
+          <div class="scheme-detail">
+            <strong>Eligibility:</strong> Usually 80% disability for national scheme; varies for state schemes (40-80%).
+          </div>
+          <div class="scheme-detail">
+            <strong>Application:</strong> Through local Social Welfare Departments with disability certificate, income proof, and ID.
+          </div>
+          <div class="scheme-detail">
+              <strong>More Info:</strong><a href="https://www.myscheme.gov.in/schemes/igndps">https://www.myscheme.gov.in/schemes/igndps</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Box 4 -->
+    <div class="guideline-box">
+      <div class="guideline-header">
+        Chronic Disease Management Programs
+        <button class="show-button" onclick="toggleContent(this)">Show More</button>
+      </div>
+      <div class="guideline-content">
+        <div class="scheme-card">
+          <div class="name">
+          <h4>1. National Programme for Prevention and Control of Cancer, Diabetes, Cardiovascular Diseases & Stroke (NPCDCS)</h4>
+          <img src="https://cms-img.coverfox.com/NPCDS.jpg">
+          </div>
+          <div class="scheme-detail">
+            <strong>Services:</strong> Screening, diagnosis, treatment for non-communicable diseases.
+          </div>
+          <div class="scheme-detail">
+            <strong>Facilities:</strong> NCD clinics at District and CHC levels, cardiac care units at District hospitals.
+          </div>
+          <div class="scheme-detail">
+            <strong>Coverage:</strong> Free diagnostics, subsidized treatment, follow-up care.
+          </div>
+          <div class="scheme-detail">
+            <strong>Access:</strong> Visit nearest NCD clinic or health center for screening.
+          </div>
+          <div class="scheme-detail">
+              <strong>More Info:</strong><a href="https://nhm.gov.in/index1.php?lang=1&level=2&sublinkid=1048&lid=604">https://nhm.gov.in/index1.php?lang=1&level=2&sublinkid=1048&lid=604</a>
+          </div>
+        </div>
+
+        <div class="scheme-card">
+          <div class="name">
+          <h4>2. National Mental Health Programme (NMHP)</h4>
+          <img src="https://cdn.slidesharecdn.com/ss_thumbnails/nmhp-200430042707-thumbnail.jpg?width=640&height=640&fit=bounds">
+          </div>
+          <div class="scheme-detail">
+            <strong>Services:</strong> Treatment and rehabilitation services for mental disorders.
+          </div>
+          <div class="scheme-detail">
+            <strong>Facilities:</strong> District Mental Health Program (DMHP) in 704 districts.
+          </div>
+          <div class="scheme-detail">
+            <strong>Components:</strong> OPD services, basic psychiatric care, counseling, follow-up, IEC activities.
+          </div>
+          <div class="scheme-detail">
+            <strong>Access:</strong> Available at district hospitals and some CHCs with DMHP.
+          </div>
+          <div class="scheme-detail">
+              <strong>More Info:</strong><a href="https://mohfw.gov.in/?q=Major-Programmes/non-communicable-diseases-injury-trauma/National-Mental-Health-Programme-NMHP">https://mohfw.gov.in</a>
+          </div>
+
+        </div>
+
+        <div class="scheme-card">
+          <div class="name">
+          <h4>3. National Tobacco Control Programme (NTCP)</h4>
+          <img src="https://www.ntcp.mohfw.gov.in/assets/images/logo-icon.png">
+          </div>
+          <div class="scheme-detail">
+            <strong>Services:</strong> Tobacco cessation services, enforcement of tobacco control laws.
+          </div>
+          <div class="scheme-detail">
+            <strong>Facilities:</strong> Tobacco Cessation Centers at district hospitals.
+          </div>
+          <div class="scheme-detail">
+            <strong>Benefits:</strong> Free counseling, nicotine replacement therapy where available.
+          </div>
+          <div class="scheme-detail">
+            <strong>Access:</strong> Visit district hospital tobacco cessation center or call national quitline 1800-11-2356.
+          </div>
+          <div class="scheme-detail">
+              <strong>More Info:</strong><a href="https://ntcp.mohfw.gov.in/">https://ntcp.mohfw.gov.in/</a>
+          </div>
+        </div>
+
+        <div class="scheme-card">
+          <div class="name">
+          <h4>4. National Programme for Health Care of the Elderly (NPHCE)</h4>
+          <img src="https://th.bing.com/th/id/OIP.oLeLE2HAQetEvZAv17W-5gHaGj?rs=1&pid=ImgDetMain">
+          </div>
+          <div class="scheme-detail">
+            <strong>Services:</strong> Dedicated healthcare for elderly with chronic conditions.
+          </div>
+          <div class="scheme-detail">
+            <strong>Facilities:</strong> Geriatric clinics at district hospitals, 10-bedded geriatric wards.
+          </div>
+          <div class="scheme-detail">
+            <strong>Benefits:</strong> Free specialized care, physiotherapy, rehabilitation services.
+          </div>
+          <div class="scheme-detail">
+            <strong>Eligibility:</strong> Individuals aged 60 years and above.
+          </div>
+          <div class="scheme-detail">
+              <strong>More Info:</strong><a href="https://mohfw.gov.in/?q=major-programmes/Non-Communicable-Diseases/Non-Communicable-Diseases-1">https://mohfw.gov.in</a>
+          </div>
+        </div>
+
+        <div class="scheme-card">
+          <div class="name">
+          <h4>5. National Programme for Prevention and Control of Fluorosis (NPPCF)</h4>
+          <img src="https://i0.wp.com/www.theindianiris.com/wp-content/uploads/2016/04/NHMlogo.png?resize=471%2C330&ssl=1">
+          </div>
+          <div class="scheme-detail">
+            <strong>Services:</strong> Screening, diagnosis, management of fluorosis.
+          </div>
+          <div class="scheme-detail">
+            <strong>Areas:</strong> 157 districts across 18 states with high fluoride levels.
+          </div>
+          <div class="scheme-detail">
+            <strong>Components:</strong> Calcium, vitamin D, nutrition supplements, defluoridation of water.
+          </div>
+          <div class="scheme-detail">
+            <strong>Access:</strong> Through district hospitals in endemic areas.
+          </div>
+          <div class="scheme-detail">
+              <strong>More Info:</strong><a href="https://dghs.mohfw.gov.in/national-program-for-prevention-and-control-of-fluorosis.php">https://dghs.mohfw.gov.in</a>
+          </div>
+
+        </div>
+
+        <div class="scheme-card">
+          <h4>6. Revised National TB Control Programme (RNTCP) / National TB Elimination Programme (NTEP)</h4>
+          <div class="scheme-detail">
+            <strong>Services:</strong> Free diagnosis and treatment for tuberculosis.
+          </div>
+          <div class="scheme-detail">
+            <strong>Benefits:</strong> Free molecular testing, drugs, nutritional support (₹500/month).
+          </div>
+          <div class="scheme-detail">
+            <strong>Coverage:</strong> All TB patients registered under the program.
+          </div>
+          <div class="scheme-detail">
+            <strong>Access:</strong> Through designated microscopy centers, TB units, DOTS centers.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Box 5 -->
+    <div class="guideline-box">
+      <div class="guideline-header">
+        Prescription & Treatment Cost Support
+        <button class="show-button" onclick="toggleContent(this)">Show More</button>
+      </div>
+      <div class="guideline-content">
+        <div class="scheme-card">
+          <div class="name">
+          <h4>1. Pradhan Mantri Bhartiya Janaushadhi Pariyojana (PMBJP)</h4>
+          <img src="https://st.adda247.com/https://s3-ap-south-1.amazonaws.com/adda247jobs-wp-assets-adda247/jobs/wp-content/uploads/sites/4/2022/03/17132521/Pradhan-Mantri-Bhartiya-Janaushadi-Pariyojana-PMBJP-01.png">
+          </div>
+          <div class="scheme-detail">
+            <strong>Benefit:</strong> Generic medicines at affordable prices (50-90% less than market rates).
+          </div>
+          <div class="scheme-detail">
+            <strong>Accessibility:</strong> Over 8,800 Jan Aushadhi Kendras across India.
+          </div>
+          <div class="scheme-detail">
+            <strong>Coverage:</strong> Over 1,800 medicines and 285 surgical items.
+          </div>
+          <div class="scheme-detail">
+            <strong>Eligibility:</strong> Open to all; no eligibility criteria.
+          </div>
+          <div class="scheme-detail">
+              <strong>More Info:</strong><a href="https://janaushadhi.gov.in/pmbjb-scheme">https://janaushadhi.gov.in/pmbjb-scheme</a>
+          </div>
+        </div>
+
+        <div class="scheme-card">
+          <div class="name">
+          <h4>2. Health Minister's Discretionary Grant</h4>
+          <img src="https://th.bing.com/th/id/OIP.QRGbQr4BjxoAOrBiZZJAUQHaF6?rs=1&pid=ImgDetMain">
+          </div>
+          <div class="scheme-detail">
+            <strong>Benefit:</strong> Financial assistance up to ₹1.25 lakh for patients below poverty line.
+          </div>
+          <div class="scheme-detail">
+            <strong>Eligibility:</strong> BPL patients suffering from major life-threatening diseases.
+          </div>
+          <div class="scheme-detail">
+            <strong>Diseases Covered:</strong> Cancer, cardiac diseases, kidney failure requiring dialysis/transplant.
+          </div>
+          <div class="scheme-detail">
+            <strong>Application:</strong> Apply to Ministry of Health & Family Welfare with medical certificate, hospital cost estimate, income proof, BPL certificate.
+          </div>
+          <div class="scheme-detail">
+              <strong>More Info:</strong><a href="https://www.mohfw.gov.in/?q=major-programmes/poor-patients-financial-assistance/health-ministers-discretionary-grant-hmdg">https://www.mohfw.gov.in</a>
+          </div>
+        </div>
+
+        <div class="scheme-card">
+          <h4>3. Rashtriya Arogya Nidhi (RAN)</h4>
+          <div class="scheme-detail">
+            <strong>Benefit:</strong> Financial assistance up to ₹15 lakh for BPL patients.
+          </div>
+          <div class="scheme-detail">
+            <strong>Eligibility:</strong> BPL patients suffering from life-threatening diseases requiring hospitalization.
+          </div>
+          <div class="scheme-detail">
+            <strong>Covered Hospitals:</strong> Super-specialty government hospitals like AIIMS, PGI, NIMHANS, etc.
+          </div>
+          <div class="scheme-detail">
+            <strong>Application:</strong> Apply through Medical Superintendent of the hospital with required documents.
+          </div>
+        </div>
+
+        <div class="scheme-card">
+          <h4>4. Health Research Scheme</h4>
+          <div class="scheme-detail">
+            <strong>Benefit:</strong> Financial assistance for patients participating in treatment trials.
+          </div>
+          <div class="scheme-detail">
+            <strong>Eligibility:</strong> Patients with specified conditions under research at ICMR institutes.
+          </div>
+          <div class="scheme-detail">
+            <strong>Coverage:</strong> Free treatment, diagnostic tests, and sometimes transportation costs.
+          </div>
+          <div class="scheme-detail">
+            <strong>Application:</strong> Through ICMR institutes and centers conducting clinical trials.
+          </div>
+        </div>
+
+        <div class="scheme-card">
+          <h4>5. State Illness Assistance Funds</h4>
+          <div class="scheme-detail">
+            <strong>Examples:</strong> Tamil Nadu Chief Minister's Comprehensive Health Insurance, Delhi Arogya Kosh, Kerala Karunya Benevolent Fund.
+          </div>
+          <div class="scheme-detail">
+            <strong>Benefits:</strong> Financial assistance varying from ₹50,000 to ₹5 lakh depending on state.
+          </div>
+          <div class="scheme-detail">
+            <strong>Eligibility:</strong> Usually for BPL families or those with annual income below specified limit.
+          </div>
+          <div class="scheme-detail">
+            <strong>Application:</strong> Through respective state health departments or district hospitals.
+          </div>
+        </div>
+
+        <div class="scheme-card">
+          <h4>6. CGHS Wellness Centers & Free Medicines</h4>
+          <div class="scheme-detail">
+            <strong>Benefit:</strong> Free medicines and treatments at CGHS Wellness Centers.
+          </div>
+          <div class="scheme-detail">
+            <strong>Eligibility:</strong> CGHS beneficiaries (central govt employees, pensioners, and dependents).
+          </div>
+          <div class="scheme-detail">
+            <strong>Coverage:</strong> OPD consultation, medicines, tests, specialist referrals.
+          </div>
+          <div class="scheme-detail">
+            <strong>Access:</strong> Through 329 CGHS Wellness Centers across 75 cities in India.
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Box 1 -->
+    <div class="guideline-box">
+      <div class="guideline-header">
+        Health Insurance Schemes
+        <button class="show-button" onclick="toggleContent(this)">Show More</button>
+      </div>
+      <div class="guideline-content">
+        <div class="scheme-card">
+          <div class="name">
+          <h4>1. Ayushman Bharat Pradhan Mantri Jan Arogya Yojana (AB PM-JAY)</h4>
+          <img src="https://th.bing.com/th/id/R.e05620409d416f188ce8dae033bd2f48?rik=VSEsLRR90HreEg&riu=http%3a%2f%2fppid.qcin.org%2fpublic%2fuploads%2fcasestudyimages%2f1574057544.5.jpg&ehk=ihhiJ%2bkEts49tKyBJHzXGRA7GL0HbmOz%2byWlqRVLrm4%3d&risl=&pid=ImgRaw&r=0">
+      </div>
+          <div class="scheme-detail">
+            <strong>Coverage:</strong> Health insurance coverage of ₹5 lakh per family per year for secondary and tertiary care hospitalization.
+          </div>
+          <div class="scheme-detail">
+            <strong>Eligibility:</strong> Poor and vulnerable families identified based on SECC database; approximately 10.74 crore families (50 crore people).
+          </div>
+          <div class="scheme-detail">
+            <strong>Benefits:</strong> Covers 3 days of pre-hospitalization and 15 days of post-hospitalization expenses, 1,400+ procedures, all pre-existing conditions.
+          </div>
+          <div class="scheme-detail">
+            <strong>Application:</strong> PMJAY Golden Card can be obtained at PM-JAY empaneled hospitals or Common Service Centers with Aadhaar card, ration card, or other specified ID.
+          </div>
+          <div class="scheme-detail">
+              <strong>More Info:</strong><a href="https://beneficiary.nha.gov.in/">https://beneficiary.nha.gov.in/</a>
+          </div>
+        </div>
+
+        <div class="scheme-card">
+          <div class="name">
+          <h4>2. Central Government Health Scheme (CGHS)</h4>
+          <img src="https://healthnewsreporting.com/wp-content/uploads/2018/12/Key-Functions-of-the-Central-Government-Health-Scheme-CGHS-Bangalore.jpg">
+      </div>
+          <div class="scheme-detail">
+            <strong>Coverage:</strong> Comprehensive medical care to central government employees, pensioners, and their dependents.
+          </div>
+          <div class="scheme-detail">
+            <strong>Eligibility:</strong> All central government employees, pensioners, members of Parliament, ex-MPs, freedom fighters, and their dependent family members.
+          </div>
+          <div class="scheme-detail">
+            <strong>Benefits:</strong> OPD consultation, medicines, lab tests, imaging, hospitalization, specialized treatments at empaneled private hospitals.
+          </div>
+          <div class="scheme-detail">
+            <strong>Application:</strong> Submit application through parent department with prescribed forms, ID proof, and photos.
+          </div>
+          <div class="scheme-detail">
+              <strong>More Info:</strong><a href="https://cghs.gov.in/CghsGovIn/faces/ViewPage.xhtml">https://cghs.gov.in/CghsGovIn/faces/ViewPage.xhtml</a>
+          </div>
+        </div>
+
+        <div class="scheme-card">
+          <div class="name">
+          <h4>3. Employees' State Insurance Scheme (ESIS)</h4>
+          <img src="https://4.bp.blogspot.com/-4Wi0qdBDez0/WXmhYt1ar6I/AAAAAAAABWE/cgU4XIo_uKAqrCAZN2fxhL_fq31j548jACEwYBhgL/s1600/13.jpg">
+          </div>
+          <div class="scheme-detail">
+            <strong>Coverage:</strong> Self-financing health insurance and social security scheme for Indian workers.
+          </div>
+          <div class="scheme-detail">
+            <strong>Eligibility:</strong> Employees earning up to ₹21,000 per month in organizations with 10+ employees (20+ in some states).
+          </div>
+          <div class="scheme-detail">
+            <strong>Benefits:</strong> Medical, sickness, maternity, disability, and dependent benefits; super-specialty treatment.
+          </div>
+          <div class="scheme-detail">
+            <strong>Application:</strong> Employer registers employees; employee contribution is 0.75% of wages, employer contributes 3.25%.
+          </div>
+          <div class="scheme-detail">
+              <strong>More Info:</strong><a href="https://www.esic.gov.in/">https://www.esic.gov.in/</a>
+          </div>
+        </div>
+
+        <div class="scheme-card">
+          <div class="name">
+          <h4>4. Rashtriya Swasthya Bima Yojana (RSBY)</h4>
+          <img src="https://th.bing.com/th/id/OIP.hlBHQJoIFnbCvJM0RXhVBwAAAA?rs=1&pid=ImgDetMain">
+          </div>
+          <div class="scheme-detail">
+            <strong>Coverage:</strong> Health insurance coverage up to ₹30,000 for BPL families (now largely merged with PM-JAY).
+          </div>
+          <div class="scheme-detail">
+            <strong>Eligibility:</strong> BPL families, MGNREGA workers, domestic workers, sanitation workers, rickshaw pullers, rag pickers.
+          </div>
+          <div class="scheme-detail">
+            <strong>Benefits:</strong> Cashless hospitalization in public and private hospitals, maternity benefits, transport allowance.
+          </div>
+          <div class="scheme-detail">
+            <strong>Application:</strong> Biometric smart card issued through enrollment camps in villages/urban areas.
+          </div>
+          <div class="scheme-detail">
+              <strong>More Info:</strong><a href="https://www.india.gov.in/spotlight/rashtriya-swasthya-bima-yojana">https://www.india.gov.in/spotlight/rashtriya-swasthya-bima-yojana</a>
+          </div>
+        </div>
+
+        <div class="scheme-card">
+          <div class="name">
+          <h4>5. Pradhan Mantri Suraksha Bima Yojana (PMSBY)</h4>
+          <img src="https://www.loanamount.in/wp-content/uploads/2022/02/Pradhan-Mantri-Suraksha-Bima-Yojana-PMSBY.png">
+          </div>
+          <div class="scheme-detail">
+            <strong>Coverage:</strong> Accident insurance with coverage of ₹2 lakh for accidental death or disability.
+          </div>
+          <div class="scheme-detail">
+            <strong>Eligibility:</strong> Indian citizens aged 18-70 years with a bank account.
+          </div>
+          <div class="scheme-detail">
+            <strong>Benefits:</strong> ₹2 lakh for accidental death/permanent disability, ₹1 lakh for partial disability.
+          </div>
+          <div class="scheme-detail">
+            <strong>Application:</strong> Annual premium of ₹12 auto-debited from bank account; apply through bank or online.
+          </div>
+          <div class="scheme-detail">
+              <strong>More Info:</strong><a href="https://financialservices.gov.in/beta/en/pmsby">https://financialservices.gov.in/beta/en/pmsby</a>
+          </div>
+        </div>
+
+        <div class="scheme-card">
+          <h4>6. State Government Health Insurance Schemes</h4>
+          <div class="scheme-detail">
+            <strong>Examples:</strong> Tamil Nadu's Chief Minister's Comprehensive Health Insurance Scheme, Kerala's Karunya Arogya Suraksha Padhathi (KASP), Karnataka's Arogya Bhagya, etc.
+          </div>
+          <div class="scheme-detail">
+            <strong>Eligibility:</strong> Varies by state, typically covering BPL families and specific vulnerable groups.
+          </div>
+          <div class="scheme-detail">
+            <strong>Benefits:</strong> Coverage ranges from ₹1.5 lakh to ₹5 lakh depending on the state.
+          </div>
+          <div class="scheme-detail">
+            <strong>Application:</strong> Through state health departments, district hospitals, or specified enrollment centers.
+          </div>
+          <div class="scheme-detail">
+              <strong>More Info:</strong><a href="https://beneficiary.nha.gov.in/">https://beneficiary.nha.gov.in/</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Box 6 -->
+    <div class="guideline-box">
+      <div class="guideline-header">
+        Emergency & Critical Care Support
+        <button class="show-button" onclick="toggleContent(this)">Show More</button>
+      </div>
+      <div class="guideline-content">
+        <div class="scheme-card">
+          <h4>1. National Ambulance Service (108)</h4>
+          <div class="scheme-detail">
+            <strong>Services:</strong> Free emergency ambulance service for medical, police, and fire emergencies.
+          </div>
+<footer>
+      <div class="container">
+          <p>&copy; 2025 Patient Support Portal. All rights reserved.</p>
+      </div>
+  </footer>
+<footer>
+      <div class="container">
+          <p>© 2025 Patient Support Portal. All rights reserved.</p>
+      </div>
+  </footer>
+  <script>
+      let sessionCards = document.querySelectorAll('.session-card');
+      let meetIdElement = document.querySelector('#meetid');
+      let passwordElement = document.querySelector('#password');
+      let linkElement = document.querySelector('#link');
+      let button=document.querySelector('.attend-button');
+
+      let sessionData = [
+          {
+              id: "123 456 7890",
+              password: "Healing2025",
+              link:"https://us05web.zoom.us/j/83369171178?pwd=cyWNGRpW3mXyLnDAw1u13RGTopVukk.1"
+          },
+          {
+              id: "987 654 3210",
+              password: "DiabetesHelp",
+              link: "https://us05web.zoom.us/j/89715931926?pwd=csig3avaERhqB3O3KpWDJSHnULIj72.1"
+          },
+          {
+              id: "555 666 7777",
+              password: "HeartHealth",
+              link: "https://us05web.zoom.us/j/83558383013?pwd=Wy5x5bjhCgtjGsbbelsobITgoaQ2vV.1"
+          },
+          {
+              id: "222 333 4444",
+              password: "MentalSupport",
+              link: "https://zoom.us/j/2223334444"
+          },
+          {
+              id: "999 888 7777",
+              password: "ChronicCare",
+              link: "https://zoom.us/j/9998887777"
+          }
+      ];
+      let selectedLink=sessionData[0].link;
+      linkElement.style.color="white";
+      sessionCards.forEach((card, index) => {
+          card.addEventListener('click', () => {
+              meetIdElement.innerHTML = `<strong>Zoom Meeting ID:</strong> ${sessionData[index].id}`;
+              passwordElement.innerHTML = `<strong>Password:</strong> ${sessionData[index].password}`;
+              linkElement.innerHTML = `<strong>Link:</strong> <a href="${sessionData[index].link}" target="_blank">${sessionData[index].link}</a>`;
+              selectedLink=sessionData[index].link;
+          });
+      });
+      button.addEventListener('click',()=>{
+          window.open(selectedLink,'_blank');
+      })
+  function toggleContent(button) {
+    const content = button.parentElement.nextElementSibling;
+    content.classList.toggle('show');
+
+    if (button.textContent === 'Show More') {
+      button.textContent = 'Show Less';
+    } else {
+      button.textContent = 'Show More';
+    }
+  }
+
+  </script>
+
+<!-- Code injected by live-server -->
+<script>
+// <![CDATA[  <-- For SVG support
+if ('WebSocket' in window) {
+  (function () {
+    function refreshCSS() {
+      var sheets = [].slice.call(document.getElementsByTagName("link"));
+      var head = document.getElementsByTagName("head")[0];
+      for (var i = 0; i < sheets.length; ++i) {
+        var elem = sheets[i];
+        var parent = elem.parentElement || head;
+        parent.removeChild(elem);
+        var rel = elem.rel;
+        if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+          var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+          elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+        }
+        parent.appendChild(elem);
+      }
+    }
+    var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+    var address = protocol + window.location.host + window.location.pathname + '/ws';
+    var socket = new WebSocket(address);
+    socket.onmessage = function (msg) {
+      if (msg.data == 'reload') window.location.reload();
+      else if (msg.data == 'refreshcss') refreshCSS();
+    };
+    if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+      console.log('Live reload enabled.');
+      sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+    }
+  })();
+}
+else {
+  console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+}
+// ]]>
+</script>
+
+</div></div></body></html>

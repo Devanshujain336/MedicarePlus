@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedWise | Smart Medicine Assistant</title>
+    <style>
+        :root {
+    --primary: #2563eb;
+    --primary-dark: #1e40af;
+    --secondary: #f97316;
+    --background: #f8fafc;
+    --text: #1e293b;
+    --text-light: #64748b;
+    --white: #ffffff;
+    --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', system-ui, sans-serif;
+}
+
+body {
+    background-color: var(--background);
+    color: var(--text);
+    line-height: 1.5;
+}
+
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+
+/* Header Styles */
+header {
+    background-color:#1e88e5;
+    box-shadow: var(--shadow);
+    /* text-emphasis-color: var(--white); */
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar {
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+}
+
+.logo span {
+    color: white;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+
+.nav-links a {
+    color: var(--background);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 20px;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--primary);
+}
+
+.mobile-menu {
+    display: none;
+}
+
+/* Hero Section */
+.hero {
+    padding: 8rem 0 4rem;
+   
+    text-align: center;
+
+    background: linear-gradient(135deg, #1e88e5,#0d47a1);
+    color: white;
+}    
+
+
+.hero h1 {
+   
+    margin-bottom: 1rem;
+}
+
+.hero p {
+  
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.hero-buttons {
+    display: flex;
+    gap:2rem;
+    justify-content: center;
+}
+
+/* Buttons */
+.btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: transform 0.2s;
+    border: none;
+    font-size: 1.3rem;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn.primary {
+    background-color: var(--secondary);
+    color: var(--white);
+}
+
+.btn.secondary {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--white);
+    backdrop-filter: blur(10px);
+}
+
+/* Features Section */
+.features-section {
+    padding: 4rem 0;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.feature-card {
+    background: rgb(178, 220, 248);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+    color: var(--text);
+    margin-bottom: 0.5rem;
+}
+
+.feature-card p {
+    color: var(--text-light);
+    margin-bottom: 1rem;
+}
+
+.feature-cta {
+    color: var(--primary);
+    font-weight: 500;
+}
+
+/* Process Section */
+.process-section {
+    background-color: var(--white);
+    padding: 4rem 0;
+}
+
+.process-section h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2rem;
+    color: var(--text);
+}
+
+.process-steps {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+
+.step {
+    text-align: center;
+    flex: 1;
+    min-width: 250px;
+}
+
+.step-number {
+    width: 40px;
+    height: 40px;
+    background-color: var(--primary);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    font-weight: bold;
+}
+
+.step-arrow {
+    color: var(--primary);
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 1rem;
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+ 
+.card-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-blue);
+        }
+
+/* Chatbot Container */
+.chatbot-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 400px;
+    height: 600px;
+    background: var(--white);
+    border-radius: 1rem;
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    display: none;
+    z-index: 999;
+}
+
+.chatbot-frame {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.section-heading {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-heading h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .section-heading p {
+            color: var(--light-text);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+
+/* Responsive Design
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    } */
+/* 
+    .mobile-menu {
+        display: block;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        color: var(--text);
+        cursor: pointer;
+    } */
+
+    .hero h1 {
+        font-size: 3rem;
+    }
+
+    .chatbot-container {
+        width: 100%;
+        height: 100%;
+        bottom: 0;
+        right: 0;
+        border-radius: 0;
+    }
+
+    .step-arrow {
+        display: none;
+    }
+
+    .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+        }
+        
+        .compare-table th, .compare-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .compare-table th {
+            background-color:#bbdefb;
+            color: #1e88e5;
+            font-weight: 600;
+        }
+        
+        .compare-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        /* @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            } */
+            
+           
+            .section {
+                padding: 3rem 0;
+            }
+            footer {
+                background-color: #1158c6;
+            color: white;
+            padding: 3rem 0;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column a {
+            color: var(--light-blue);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: white;
+        }
+        
+        
+         
+
+
+    </style>
+
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">Med<span>Wise</span></div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#benefits">Benefits</a></li>
+                    <li><a href="#find">Find Alternatives</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <!-- <button class="mobile-menu" onclick="toggleMobileMenu()">☰</button> -->
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Your Smart Healthcare Companion</h1>
+            <p>Find affordable generic alternatives and get expert medical consultations - all in one place.</p>
+            <div class="hero-buttons">
+                <button onclick="openChatbot()" class="btn primary">Find Generic Medicines</button>
+                <button onclick="connectToDoctor()" class="btn secondary">Consult a Doctor</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section features-section">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-card" onclick="openChatbot()">
+                    <div class="feature-icon">🤖</div>
+                    <h3>AI Medicine Guide</h3>
+                    <p>Get instant recommendations for affordable generic alternatives</p>
+                    <div class="feature-cta">Chat Now</div>
+                </div>
+                <div class="feature-card" onclick="connectToDoctor()">
+                    <div class="feature-icon">👨‍⚕️</div>
+                    <h3>Video Consultation</h3>
+                    <p>Connect with qualified doctors through eSanjeevani</p>
+                    <div class="feature-cta">Connect</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="section process-section">
+        <div class="container">
+            <h2>How It Works</h2>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Chat with AI</h3>
+                    <p>Get personalized generic medicine recommendations</p>
+                </div>
+                <div class="step-arrow">→</div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Review Options</h3>
+                    <p>Compare prices and effectiveness</p>
+                </div>
+                <div class="step-arrow">→</div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Consult Doctor</h3>
+                    <p>Confirm your choice with medical professionals</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div id="doctorModal" class="modal">
+        <div class="modal-content">
+            <h2>Connecting to eSanjeevani</h2>
+            <p>You're being redirected to the official eSanjeevani platform for your video consultation.</p>
+            <div class="modal-buttons">
+                <button onclick="proceedToESanjeevani()" class="btn primary">Proceed</button>
+                <button onclick="closeModal()" class="btn secondary">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+
+     <!-- Comparison Table -->
+     <section class="section light-bg">
+        <div class="container">
+            <div class="section-heading">
+                <h2>Generic vs. Branded: What's the Difference?</h2>
+                <p>Understanding key distinctions while maintaining therapeutic effectiveness</p>
+            </div>
+            <table class="compare-table">
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Generic Medicines</th>
+                        <th>Branded Medicines</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Active Ingredient</strong></td>
+                        <td>Identical to branded version</td>
+                        <td>Original formulation</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Price</strong></td>
+                        <td>40-90% less expensive</td>
+                        <td>Higher cost</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Regulatory Approval</strong></td>
+                        <td>FDA-approved with same standards</td>
+                        <td>FDA-approved</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Appearance</strong></td>
+                        <td>May look different due to trademark laws</td>
+                        <td>Distinctive appearance</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Inactive Ingredients</strong></td>
+                        <td>May contain different fillers or flavorings</td>
+                        <td>Specific inactive ingredients</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Effectiveness</strong></td>
+                        <td>Bioequivalent to branded medicine</td>
+                        <td>Original standard</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer id="i1" class="#contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Med Wise</h3>
+                    <p>Helping you make smart medication choices that protect both your health and your wallet.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Generics</a></li>
+                        <li><a href="#benefits">Benefits</a></li>
+                        <li><a href="#find">Find Alternatives</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Medicine Database</a></li>
+                        <li><a href="#">Generic FAQs</a></li>
+                        <li><a href="#">Savings Calculator</a></li>
+                        <li><a href="#">Health Articles</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                  <a href="#contact"><h3>Contact Us</h3>    </a>  
+                    <ul>
+                        <li><a href="devanshu.com">devanshujain.com</a></li>
+                        <li><a href="tel:+1234567890">+9301601955</a></li>
+                        <li><a href="#">Support Center</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chatbot Container -->
+    <div id="chatbot-container" class="chatbot-container">
+        <div id="botpress-webchat" class="chatbot-frame"></div>
+    </div>
+
+    <script>
+        // Mobile menu functionality
+// function toggleMobileMenu() {
+//     const navLinks = document.querySelector('.nav-links');
+//     navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+// }
+
+// Chatbot functionality
+function openChatbot() {
+  window.open('https://cdn.botpress.cloud/webchat/v2.3/shareable.html?configUrl=https://files.bpcontent.cloud/2025/02/27/13/20250227133435-CAS2LANO.json', '_blank');
+closeModal();
+//     chatbotContainer.style.display = 'block';
+ }
+
+// Doctor consultation modal
+function connectToDoctor() {
+    document.getElementById('doctorModal').style.display = 'flex';
+}
+
+function closeModal() {
+    document.getElementById('doctorModal').style.display = 'none';
+}
+
+function proceedToESanjeevani() {
+    window.open('https://esanjeevani.mohfw.gov.in/#/patient/signin', '_blank');
+    closeModal();
+}
+
+// Close modal when clicking outside
+window.onclick = function(event) {
+    const modal = document.getElementById('doctorModal');
+    if (event.target === modal) {
+        closeModal();
+    }
+}
+
+// Initialize Botpress chatbot
+window.botpressWebChat.init({
+    composerPlaceholder: "Chat with our AI about medicine alternatives...",
+    botConversationDescription: "This AI can help you find generic medicine alternatives",
+    botId: "4T229U0Z",
+    hostUrl: "https://cdn.botpress.cloud/webchat/v2.2",
+    messagingUrl: "https://messaging.botpress.cloud",
+    clientId: "4T229U0Z",
+    botName: "Medicine Assistant",
+    stylesheet: "https://files.bpcontent.cloud/2025/02/27/13/20250227133435-4T229U0Z.css",
+    useSessionStorage: true,
+    showPoweredBy: false,
+});
+    </script>
+   
+
+
+<!--    
+   <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
+   <script src="https://files.bpcontent.cloud/2025/02/27/13/20250227133435-4T229U0Z.js"></script>
+        -->
+        <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
+        <script src="https://files.bpcontent.cloud/2025/03/28/20/20250328202239-6IX6Z5VR.js"></script>
+</body>
+</html>

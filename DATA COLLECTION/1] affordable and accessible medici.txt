@@ -1,0 +1,31 @@
+                            1] affordable and accessible medicine --> 
+                                    
+medicines -> high commission, expensive, unaffordable medicines --> our AI chatbot --> analyse active ingredients --> medicine with same ingredients but cheaper at rate direct recommendstions  -->> saves money cures diseases, no deaths due to unavailibilty of medicines --> CONNECTS TO FREE DOCTORS THROUGH E-SANJEEVNI, SO THAT YOU CAN FURTHER GET RECOMMENDATION FROM THE DOCTOR
+       on scanning or entering medicine name-->     
+how does medicines works usages so user can be more alert and knowledge, more knoweldgee more connecting with medicines, which receptor and organ it is curing, effects on body like cough syrup will make you feel extreme dizziness
+
+notification based tracker for eating medicines reminders and refilling medicines when getting end
+
+
+2] early detection -->  a] for hospitals/bedrest --> 24*7 detection through OpenCV for tracking movements during day and night time and making alarms during extreme condition/patient unusual movement 
+b] scanner -> which scans CT SCANS, X RAYS AND VARIOUS REPORTS which recognize disease through python liabrary through clinically facing decision support system  PREDITCT about future pain occurring IN LUNGS, KIDNEYS ETC
+
+federated learning 3D model which anaylsis frequent report and fluctualtion tracking in body if irregular then chances of internal diseases
+
+3] locations based --> a] nearby assistance replacing delayed ambulance --> nearby medicine centers and clinic on click call, so that when you need emergency assistance and hospital to go, that person can come and take fastly to you to hospitals instead waiting ambulance voleunteer us
+
+b] particular region prone to diseases alert, so that you be prior alert for the location
+
+
+
+
+
+
+4] live session of patients who cured from that diseases as one learns and motivates more through real stories and brain games
+
+5] recommendation --> 
+a] medical history --> record feeded data for your different lab tests so that during emergency specicialist/ doctor can understand your prior condition and can make best treatment, ALL LAB TESTS AT ONE PLACE AND BASICS TEST TAKING LIKE DEPRESSSION TESTS AND ANXIETY TESTS ETC
+
+
+5] govt schemes for particular diseases USING FILTER BASED ON INCOME, STATE AND CASTE
+

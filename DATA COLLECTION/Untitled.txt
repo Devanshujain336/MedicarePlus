@@ -1,0 +1,45 @@
+
+
+LINK FOR DIRECT ORDER THROUGH WHATSAAP
+
+https://api.whatsapp.com/send/?phone=918983104104&text=Hello%2C+i+am+interested+in+Jan+Aushadhi+%2F+Generic+medicines.+I+am+sending+prescription+photo%2C+please+check+and+revert+back.+I+am+contacting+you+through+your+website+janaushadhistore.in.+%28Please+do+not+delete+this+template+message%29&type=phone_number&app_absent=0
+
+CENTER LOCATOR -->  https://janaushadhi.gov.in/near-by-kendra
+
+
+Identify the core target audience / market / beneficiary: (Word limit: 50 words) for this idea
+ChatGPT said:
+Our core target audience includes low-income individuals, rural populations, and uninsured patients who struggle with high healthcare costs. Elderly, chronically ill, and emergency patients benefit from real-time monitoring and quick medical assistance. Doctors, pharmacists, and paramedics also gain a streamlined way to assist patients. Government agencies can utilize our platform for healthcare outreach.
+
+
+
+make this into 100 words with subpoints
+ChatGPT said:
+Affordable & AI-Driven Healthcare Platform
+🔹 Affordable Medicines for All
+
+Only 1% of Indians access generic medicines.
+Our AI analyzes prescriptions and suggests cheaper branded & generic alternatives, reducing costs by 80-90%.
+🔹 AI-Based Early Disease Detection
+
+Detects skin marks, facial expressions, and MRI reports to identify health issues early.
+🔹 Emergency Medical Assistance
+
+Connects nearby paramedics from clinics & medical shops for quick first aid and hospital transport.
+🔹 Patient Motivation & Support
+
+Connects recovering patients to inspire and boost confidence.
+Provides structured access to government healthcare schemes based on state, caste, and income for financial aid. 🚑💊
+
+only 1% indians have access of generic medicines, so we made a platform where one can directly enter their presecribed medicine, out ai anaylses its active ingredients and give other cost effective branded alternative and generic medicines, which reduces cost to 80-90%, which most of the advanced healthcare countries are using, we also need to adopt this
+
+with the help of detecting model, to detect early stage problems through anaylsing marks, facial epressions, and analysis MRI reports
+
+during emergency can;t find someone to reach hospitals, hence connects paramedical persons nearby either working in clinic or medical shop, to directly some and give basic treatment and take them hospital
+
+patients are generally lack in belief that they will be cured or not, hence we connect the patient who recovered from disease to platform, so that they can get motivated, 
+
+all goverment schemes running in india for health, which most of the people are unaware , give them structured format , with filter for state, caste and income wise 
+
+
+

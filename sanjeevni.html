@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect with a Doctor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f9fa; /* Light gray-blue background */
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #3498db; /* Deep blue header */
+            color: white;
+            padding: 1em;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        main {
+            padding: 2em;
+            max-width: 800px; /* Centered content */
+            margin: auto;
+        }
+
+        h1, h2 {
+            color: #3498db; /* Deep blue headings */
+            margin-bottom: 10px;
+        }
+
+        .hero {
+            background-color: #e6f7ff; /* Light blue section */
+            padding: 2em;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .features ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+
+        .call-to-action {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .btn-primary {
+            background-color: #3498db; /* Deep blue button */
+            color: white;
+            padding: 15px 32px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #2e6da4; /* Darker blue on hover */
+        }
+
+        footer {
+            background-color: #3498db; /* Deep blue footer */
+            color: white;
+            text-align: center;
+            padding: 1em;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Additional Styles for Better Look */
+        .about img {
+            width: 100%;
+            height: auto;
+            margin: 10px 0;
+            border-radius: 10px;
+        }
+
+        .testimonial {
+            background-color: #f2f2f2;
+            padding: 1em;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .testimonial img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            float: left;
+            margin-right: 10px;
+        }
+
+        .testimonial p {
+            margin-top: 0;
+        }
+
+        /* Trust Elements */
+        .trust-icon {
+            font-size: 24px;
+            color: #3498db;
+            margin: 0 5px;
+        }
+
+        .trust-text {
+            font-size: 16px;
+            color: #666;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Chatbot</a></li>
+            <li><a href="#">eSanjeevani</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact Us</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section class="hero">
+        <h1>Connect with a Doctor for Expert Advice</h1>
+        <p>Our chatbot has suggested the best generic alternatives for your needs. Now, take the next step and speak directly with a qualified doctor through eSanjeevani!</p>
+    </section>
+
+    <section class="features">
+        <h2>Benefits of Using eSanjeevani</h2>
+        <ul>
+            <li>Discuss your specific health condition in detail.</li>
+            <li>Get answers to any remaining questions about the recommended medicines.</li>
+            <li>Receive personalized confirmation and dosage advice.</li>
+            <li>Ensure the chosen generic medicine is right for you.</li>
+        </ul>
+    </section>
+
+    <section class="call-to-action">
+        <h2>Connect with a Doctor Now!</h2>
+        <a href="https://esanjeevani.mohfw.gov.in/#/patient/signin" target="_blank" class="btn-primary">Talk to a Doctor via eSanjeevani</a>
+        <p style="font-size: smaller;">Powered by the Government of India's National Teleconsultation Service.</p>
+    </section>
+
+    <section class="about">
+        <h2>Your Health Journey, Simplified.</h2>
+        <p>We're committed to providing you with the tools and information you need to make informed healthcare decisions. Our chatbot and seamless connection to eSanjeevani are just two ways we're helping you take control of your health.</p>
+        <img src="https://unsplash.it/800/200" alt="Healthcare Image">
+    </section>
+
+    <section class="testimonial">
+        <img src="https://unsplash.it/50/50" alt="User Photo">
+        <p>"I found the chatbot and eSanjeevani integration incredibly helpful. It saved me time and provided peace of mind with expert advice."</p>
+        <p style="font-size: smaller;">— John Doe</p>
+    </section>
+
+    <section class="trust">
+        <h2>Why Trust Us?</h2>
+        <p class="trust-text">We are committed to providing secure and reliable services. Our platform is designed with your safety in mind.</p>
+        <i class="trust-icon fas fa-lock"></i>
+        <i class="trust-icon fas fa-shield-alt"></i>
+        <i class="trust-icon fas fa-check-circle"></i>
+    </section>
+</main>
+
+<footer>
+    &copy; 2025 Your Website Name
+</footer>
+
+</body>
+</html>

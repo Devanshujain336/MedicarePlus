@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediRam Pitch Deck</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        .deck-container {
+            width: 100%;
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .slide {
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+        .slide-content {
+            padding: 40px;
+            box-sizing: border-box;
+            position: relative;
+        }
+        .title-slide {
+            background: linear-gradient(135deg, #2b5876 0%, #4e4376 100%);
+            color: white;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 500px;
+        }
+        .section-slide {
+            background: linear-gradient(135deg, #4e4376 0%, #2b5876 100%);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            min-height: 400px;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .title-slide h1, .section-slide h1 {
+            color: white;
+            font-size: 3em;
+        }
+        h2 {
+            font-size: 1.8em;
+            color: #4e4376;
+            margin-top: 0;
+        }
+        h3 {
+            font-size: 1.4em;
+            color: #666;
+        }
+        p {
+            font-size: 1.1em;
+            line-height: 1.5;
+            color: #555;
+        }
+        ul {
+            margin-top: 20px;
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+            font-size: 1.1em;
+            color: #555;
+        }
+        .logo-container {
+            width: 200px;
+            height: 200px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .logo-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 50%;
+        }
+        .image-container {
+            width: 100%;
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+        }
+        .subtitle {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            color: #777;
+        }
+        .title-slide .subtitle {
+            color: rgba(255,255,255,0.8);
+        }
+        .contact-info {
+            margin-top: 30px;
+            font-size: 1em;
+            color: rgba(255,255,255,0.8);
+        }
+        .chart-container {
+            width: 100%;
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .chart-container img {
+            max-width: 100%;
+            height: auto;
+        }
+        .quote {
+            font-style: italic;
+            border-left: 4px solid #4e4376;
+            padding-left: 20px;
+            margin: 20px 0;
+        }
+        .two-column {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .column {
+            width: 48%;
+        }
+        .highlight-box {
+            background-color: rgba(78, 67, 118, 0.1);
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        .tagline {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #4e4376;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .title-slide .tagline {
+            color: white;
+        }
+        .footer {
+            position: absolute;
+            bottom: 10px;
+            right: 20px;
+            font-size: 0.8em;
+            color: #888;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .slide-content {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+            .two-column {
+                flex-direction: column;
+            }
+            .column {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+            .tagline {
+                font-size: 1.2em;
+            }
+            .title-slide, .section-slide {
+                min-height: 350px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .slide-content {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.3em;
+            }
+            li {
+                font-size: 1em;
+            }
+            .logo-container {
+                width: 150px;
+                height: 150px;
+            }
+            .tagline {
+                font-size: 1.1em;
+            }
+            .title-slide, .section-slide {
+                min-height: 300px;
+            }
+        }
+        
+        /* Navigation menu */
+        .nav-menu {
+            background-color: #2b5876;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 10px 20px;
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+        }
+        .nav-logo img {
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .nav-logo span {
+            color: white;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        .nav-links {
+            display: flex;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        .nav-links a:hover {
+            background-color: rgba(255,255,255,0.2);
+        }
+        .menu-toggle {
+            display: none;
+            color: white;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                right: 0;
+                background-color: #2b5876;
+                padding: 10px 0;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .nav-links a {
+                margin: 5px 20px;
+            }
+            .menu-toggle {
+                display: block;
+            }
+        }
+        
+        /* Add space for fixed navigation */
+        body {
+            padding-top: 60px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Menu -->
+    <nav class="nav-menu">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="https://i.ibb.co/sQ5HDcv/mediram-logo.png" alt="MediRam Logo">
+                <span>MediRam</span>
+            </div>
+            <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+            <div class="nav-links" id="navLinks">
+                <a href="#problem">Problem</a>
+                <a href="#solution">Solution</a>
+                <a href="#market">Market</a>
+                <a href="#business">Business</a>
+                <a href="#roadmap">Roadmap</a>
+                <a href="#team">Team</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="deck-container">
+        <!-- Slide 1: Title Slide -->
+        <div class="slide title-slide" id="home">
+            <div class="slide-content">
+                <div class="logo-container">
+                    <div class="logo-placeholder"><img src="https://sdmntpreastus2.oaiusercontent.com/files/00000000-d918-61f6-a082-7d364a4f00f4/raw?se=2025-04-15T08%3A01%3A37Z&sp=r&sv=2024-08-04&sr=b&scid=49fa16b2-e8b5-59f6-bd1e-96963cd4c499&skoid=2f36945c-3adc-4614-ac2b-eced8f672c58&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-04-15T01%3A57%3A17Z&ske=2025-04-16T01%3A57%3A17Z&sks=b&skv=2024-08-04&sig=mjbDD%2BolDvOBr0/dbvO/tiTtB6Kes5A8htTsRVaTlGU%3D" width="250px"  alt=""></div>
+                </div>
+                <h1>MediRam</h1>
+                <div class="tagline">Let's destroy the Ravans of Pharma and build back the Healthy Raamraaj</div>
+                <div class="contact-info">
+                    <p>Devanshu Jain<br>
+                    devanshu@mediram.in | +91 98765 43210</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2: Problem Statement -->
+        <div class="slide" id="problem">
+            <div class="slide-content">
+                <h2>Problem Statement</h2>
+                <div class="image-container">
+                    <div class="image-placeholder"><img src="https://sdmntprsouthcentralus.oaiusercontent.com/files/00000000-d8b8-61f7-9f70-d722091678aa/raw?se=2025-04-15T07%3A48%3A06Z&sp=r&sv=2024-08-04&sr=b&scid=4e9a5ddb-d6c4-5954-b574-47d771449876&skoid=fa7966e7-f8ea-483c-919a-13acfd61d696&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-04-15T01%3A35%3A29Z&ske=2025-04-16T01%3A35%3A29Z&sks=b&skv=2024-08-04&sig=MiPHyaTnlqyprt73D2mpC3a1O2NKNUKf51kv3A846ig%3D" width="300px"></div>
+                </div>
+                <ul>
+                    <li><strong>Overpriced Medicines:</strong> Brand-name drugs inflate costs by 200-500%</li>
+                    <li><strong>Financial Burden:</strong> 60% of healthcare expenses are out-of-pocket</li>
+                    <li><strong>Trust Deficit:</strong> Generics are available but lack public trust & visibility</li>
+                    <li><strong>Confusion:</strong> People don't know which generics are legitimate or where to safely purchase them</li>
+                </ul>
+                <div class="quote">
+                    "The average Indian family spends ₹2,500+ monthly on medicines alone"
+                </div>
+                <div class="footer">MediRam | 2</div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Opportunity -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2>Opportunity</h2>
+                <div class="two-column">
+                    <div class="column">
+                        <ul>
+                            <li><strong>Massive Market:</strong> ₹50,000+ crore annual medicine market in India</li>
+                            <li><strong>Digital Transformation:</strong> Rising smartphone and internet penetration</li>
+                            <li><strong>Policy Support:</strong> Government actively promoting generics through Jan Aushadhi</li>
+                            <li><strong>Consumer Readiness:</strong> Customers willing to switch if trust, quality, and price are ensured</li>
+                        </ul>
+                    </div>
+                    <div class="column">
+                        <div class="chart-container">
+                            <div class="chart-placeholder"><img src="https://sdmntprsouthcentralus.oaiusercontent.com/files/00000000-fac4-61f7-aadc-aa6e7954a605/raw?se=2025-04-15T07%3A48%3A03Z&sp=r&sv=2024-08-04&sr=b&scid=a175cb05-4897-5755-81be-340672e90665&skoid=fa7966e7-f8ea-483c-919a-13acfd61d696&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-04-14T20%3A16%3A52Z&ske=2025-04-15T20%3A16%3A52Z&sks=b&skv=2024-08-04&sig=24x2Cxwag7zXjDecsZf2Jz2isonRfjzODE6tFkG32Ps%3D" width=250px
+                            </div>
+                    </div>
+                </div>
+                <div class="footer">MediRam | 3</div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Our Solution -->
+        <div class="slide" id="solution">
+            <div class="slide-content">
+                <h2>Our Solution</h2>
+                <div class="tagline">"Same Medicine. Trusted. Cheaper."</div>
+                <div class="image-container">
+                    <img src="https://th.bing.com/th/id/OIP.y4AGDryPsjJxO69wF00dVwHaEK?w=287&h=180&c=7&r=0&o=5&dpr=1.1&pid=1.7" alt="MediRam Product & App Mockup">
+                </div>
+                <div class="two-column">
+                    <div class="column">
+                        <ul>
+                            <li><strong>Verified Quality:</strong> Only DCGI-approved, batch-tested medicines</li>
+                            <li><strong>Omnichannel Presence:</strong> User-friendly mobile app, website, and strategic physical stores</li>
+                        </ul>
+                    </div>
+                    <div class="column">
+                        <ul>
+                            <li><strong>Smart Technology:</strong> AI assistant to suggest alternatives to expensive medications</li>
+                            <li><strong>Trust Building:</strong> Complete transparency on sourcing, testing, and equivalence</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer">MediRam | 4</div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Why Us / Differentiator -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2>Our Differentiators</h2>
+                <div class="image-container">
+                    <img src="" alt="Comparison with Competitors">
+                </div>
+                <ul>
+                    <li><strong>Rigorous Verification:</strong> Only 100% verified sources with quality assurance</li>
+                    <li><strong>Trust-First Branding:</strong> Building consumer confidence like Amul did for milk</li>
+                    <li><strong>Complete Transparency:</strong> Clear information on composition and branded equivalents</li>
+                    <li><strong>Innovative Technology:</strong> AI-powered prescription assistant for affordable alternatives</li>
+                    <li><strong>Community Approach:</strong> Partnerships with doctors, influencers, and health advocates</li>
+                </ul>
+                <div class="footer">MediRam | 5</div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Market Size -->
+        <div class="slide" id="market">
+            <div class="slide-content">
+                <h2>Market Size</h2>
+                <div class="chart-container">
+                    <img src="https://th.bing.com/th/id/OIP.zhWa62WCvQgx2wa71CAKrgHaD3?w=330&h=180&c=7&r=0&o=5&dpr=1.1&pid=1.7" alt="Market Size Chart">
+                </div>
+                <div class="two-column">
+                    <div class="column">
+                        <ul>
+                            <li><strong>Total Indian Pharma Market:</strong> $50B+ growing at 12% annually</li>
+                            <li><strong>Generics Segment:</strong> $35B+ with projected 15% CAGR</li>
+                        </ul>
+                    </div>
+                    <div class="column">
+                        <ul>
+                            <li><strong>Our Target Market:</strong> ₹10,000+ crore (urban + semi-urban consumers)</li>
+                            <li><strong>Future Expansion:</strong> Global potential in emerging markets and low-income nations</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer">MediRam | 6</div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Business Model -->
+        <div class="slide" id="business">
+            <div class="slide-content">
+                <h2>Business Model</h2>
+                <div class="image-container">
+                    <img src="https://i.ibb.co/8bNCfVg/business-model.jpg" alt="Business Model Diagram">
+                </div>
+                <div class="two-column">
+                    <div class="column">
+                        <ul>
+                            <li><strong>Direct-to-Consumer (D2C)</strong> sales via app/website with 30-60% margins</li>
+                            <li><strong>Subscription Plans</strong> for chronic patients with predictable refills</li>
+                        </ul>
+                    </div>
+                    <div class="column">
+                        <ul>
+                            <li><strong>Local Pharmacy Network</strong> Creating a different section named as MediRam in pharmacies to make them sell our generics</li>
+                            <li><strong>Complementary Revenue</strong> from diagnostics partnerships and wellness products</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer">MediRam | 7</div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Go-To-Market Strategy -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2>Go-To-Market Strategy</h2>
+                <div class="image-container">
+                    <img src="https://i.ibb.co/MV7yYf2/growth-strategy.jpg" alt="Growth Strategy Diagram">
+                </div>
+                <ul>
+                    <li><strong>Geographic Expansion:</strong> Launch in Tier-1 cities, then expand to Tier-2/3</li>
+                    <li><strong>Strategic Partnerships:</strong> Collaborate with doctors, clinics, and healthcare providers</li>
+                    <li><strong>Awareness Campaigns:</strong> Influencer-led education on generic medicine benefits</li>
+                    <li><strong>Community Building:</strong> Develop loyal user base through health tracking app</li>
+                    <li><strong>NGO & Government Collaboration:</strong> Leverage existing generic medicine initiatives</li>
+                </ul>
+                <div class="footer">MediRam | 8</div>
+            </div>
+        </div>
+
+        <!-- Slide 9: Traction / Roadmap -->
+        <div class="slide" id="roadmap">
+            <div class="slide-content">
+                <h2>Traction & Roadmap</h2>
+                <div class="highlight-box">
+                    <strong>Completed:</strong>
+                    <ul>
+                        <li>Market research and idea validation ✓</li>
+                        <li>Initial supplier discussions ✓</li>
+                        <li>MVP development in progress ✓</li>
+                    </ul>
+                </div>
+                <div class="image-container">
+                    <img src="https://i.ibb.co/0jrWBh7/roadmap.jpg" alt="Timeline / Roadmap Graphic">
+                </div>
+                <p><strong>Next Steps:</strong></p>
+                <ul>
+                    <li><strong>Q2 2025:</strong> Launch pilot in Bangalore</li>
+                    <li><strong>Q3 2025:</strong> Add AI recommendation engine, expand to Mumbai and Delhi</li>
+                    <li><strong>Q4 2025:</strong> Reach 100,000+ users across 4 major cities</li>
+                    <li><strong>2026:</strong> National expansion and subscription model rollout</li>
+                </ul>
+                <div class="footer">MediRam | 9</div>
+            </div>
+        </div>
+
+        <!-- Slide 10: Team -->
+        <div class="slide" id="team">
+            <div class="slide-content">
+                <h2>Our Team</h2>
+                <div class="image-container">
+                    <img src="https://i.ibb.co/KjFjk26/team.jpg" alt="Team Photos">
+                </div>
+                <div class="two-column">
+                    <div class="column">
+                        <h3>Current Team</h3>
+                        <ul>
+                            <li><strong>Devanshu Jain</strong> – Founder & CEO<br>Vision, Technology, Execution</li>
+                        </ul>
+                    </div>
+                    <div class="column">
+                        <h3>Key Positions to Fill</h3>
+                        <ul>
+                            <li>Head of Pharmacy & Supply Chain</li>
+                            <li>Marketing & Brand Strategy Lead</li>
+                            <li>Technical Development Team</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="quote">
+                    "We're building a team passionate about healthcare accessibility"
+                </div>
+                <div class="footer">MediRam | 10</div>
+            </div>
+        </div>
+
+        <!-- Slide 11: Financials / Projections -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2>Financials & Projections</h2>
+                <div class="chart-container">
+                    <img src="https://i.ibb.co/2qXHtVB/financial-projections.jpg" alt="Financial Projection Chart">
+                </div>
+                <div class="two-column">
+                    <div class="column">
+                        <h3>Revenue Targets</h3>
+                        <ul>
+                            <li><strong>Year 1:</strong> ₹1 crore with 5,000 recurring customers</li>
+                            <li><strong>Year 2:</strong> ₹5 crore, breakeven point achieved</li>
+                            <li><strong>Year 3:</strong> ₹15+ crore with national presence</li>
+                        </ul>
+                    </div>
+                    <div class="column">
+                        <h3>Key Metrics</h3>
+                        <ul>
+                            <li><strong>Customer Acquisition Cost:</strong> ₹200-300</li>
+                            <li><strong>Average Order Value:</strong> ₹850</li>
+                            <li><strong>Gross Margins:</strong> 30-60%</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer">MediRam | 11</div>
+            </div>
+        </div>
+
+        <!-- Slide 12: Ask -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2>Investment Ask</h2>
+                <div class="highlight-box">
+                    <strong>Seed Funding: ₹30-50 Lakhs</strong>
+                </div>
+                <div class="chart-container">
+                    <img src="https://i.ibb.co/Tc5Tzky/fund-allocation.jpg" alt="Fund Allocation Pie Chart">
+                </div>
+                <div class="two-column">
+                    <div class="column">
+                        <h3>Allocation of Funds</h3>
+                        <ul>
+                            <li>Tech Platform Development: 40%</li>
+                            <li>Inventory & Supply Chain: 30%</li>
+                            <li>Marketing & Customer Acquisition: 25%</li>
+                            <li>Operations: 5%</li>
+                        </ul>
+                    </div>
+                    <div class="column">
+                        <h3>Also Seeking</h3>
+                        <ul>
+                            <li>Strategic mentorship in healthcare & pharma</li>
+                            <li>Industry partnerships and connections</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer">MediRam | 12</div>
+            </div>
+        </div>
+
+        <!-- Slide 13: Closing Slide -->
+        <div class="slide title-slide" id="contact">
+            <div class="slide-content">
+                <h1>Our Vision</h1>
+                <div class="tagline">"Affordable medicines, accessible to every Indian, trusted like family."</div>
+                <div class="contact-info">
+                    <p>Devanshu Jain<br>
+                    devanshu@mediram.in | +91 98765 43210<br>
+                    www.mediram.in</p>
+                </div>
+                <h2 style="color: white; margin-top: 30px;">Thank you!</h2>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            var navLinks = document.getElementById("navLinks");
+            if (navLinks.classList.contains("active")) {
+                navLinks.classList.remove("active");
+            } else {
+                navLinks.classList.add("active");
+            }
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70, // Adjust for fixed header
+                        behavior: 'smooth'
+                    });
+                }
+                
+                // Close mobile menu after clicking
+                document.getElementById("navLinks").classList.remove("active");
+            });
+        });
+    </script>
+</body>
+</html>
